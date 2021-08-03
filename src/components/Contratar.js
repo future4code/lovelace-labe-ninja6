@@ -1,14 +1,17 @@
 import React from 'react'
 import Styled from 'styled-components'
+import { Input, Select, MenuItem, InputLabel, FormControl, Button } from '@material-ui/core';
+
 
 const StyledContainerContratar = Styled.div`
     width: 100%;
+    min-height: 94.2vh;
     display: grid;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr 9fr;
+    background: #25274D;
 
 `
-
 const StyledContainerControles = Styled.div`
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -21,30 +24,42 @@ const StyledContainerBusca = Styled.div`
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     display: flex;
-    background: gray;
+    background: #AAABB8;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 5%;
     margin: 10px;
     min-width: 120px;
     
-    input {
-        width: 50%;
-        min-width: 100px;
-        margin-top: 20px;
-    }
-
-    input:nth-child(1) {
-        min-width: 10px;
-        width: 80%;
-        margin-bottom: 20px;
-    }
 `
+const StyledInputBuscar = Styled(Input)`
+    min-width: 10px;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    background: white;
+`
+const StyledFormControl = Styled(FormControl)`
+    width: 50%;
+    min-width: 100px;
+    margin-top: 20px;
+    background: white;
+    padding: 5px;
+`
+const StyledInput = Styled(Input)`
+    width: 50%;
+    min-width: 100px;
+    margin-top: 20px;
+    padding-left: 10px;
+    background: white;
+`
+
 const StyledContainerCards = Styled.div`
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 
-    background: gray;
+    background: #AAABB8;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -61,20 +76,48 @@ const StyledCardServico = Styled.div`
 `
 
 
-export default class Contratar extends React.Component{
-    render(){
+
+export default class Contratar extends React.Component {
+    render() {
+
         return (
             <StyledContainerContratar>
 
                 <StyledContainerControles>
-                    <button>Voltar</button>
+                    <Button variant="outlined" color="primary">Voltar</Button>
                 </StyledContainerControles>
 
                 <StyledContainerBusca>
-                    <input />
-                    <input />
-                    <input />
-                    <input />
+                    <StyledInputBuscar
+                        placeholder='Buscar'
+                    />
+
+
+                    <StyledFormControl variant="filled">
+                        <InputLabel id="demo-simple-select-filled-label">Ordenar</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-filled-label"
+                        id="demo-simple-select-filled"
+                        // value={age}
+                        // onChange={handleChange}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                    </StyledFormControl>
+
+
+                    <StyledInput
+                        placeholder='Valor mínimo'
+                    />
+                    <StyledInput
+                        placeholder='Valor mínimo'
+                    />
+
                 </StyledContainerBusca>
 
                 <StyledContainerCards>
@@ -84,7 +127,7 @@ export default class Contratar extends React.Component{
                     <StyledCardServico />
                     <StyledCardServico />
                     <StyledCardServico />
-                    <StyledCardServico />   
+                    <StyledCardServico />
                 </StyledContainerCards>
 
 
