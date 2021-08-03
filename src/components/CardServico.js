@@ -24,8 +24,14 @@ const ContainerServico = styled.div`
   box-sizing: border-box;
   background-color: aliceblue;
   color: #25274d;
+
+  h1,
+  p {
+    margin: 20px;
+  }
+
   Button {
-    margin: 10px;
+    margin: 20px;
   }
 `;
 
