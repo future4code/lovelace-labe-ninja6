@@ -1,15 +1,11 @@
-<<<<<<< HEAD
 import React, {Component} from 'react'
-=======
-import React, { Component } from 'react'
 import Styled from 'styled-components'
 
->>>>>>> master
 import CardServico from './CardServico'
-import Carrinho from './Carrinho/Carrinho'
+import Carrinho from './ComponentCarrinho/Carrinho'
 import Contratar from './Contratar'
 import Detalhes from './Detalhes'
-import Home from './Home'
+import Home from './ComponentHome/Home'
 import QueroSerUmNinja from './QueroSerUmNinja'
 
 const StyledAppContainer = Styled.div`
@@ -45,7 +41,7 @@ export class AppContainer extends Component {
             case 'carrinho':
                 return <Carrinho/>
 
-<<<<<<< HEAD
+
             case 'contratar':
                 return <Contratar/>
 
@@ -82,10 +78,7 @@ export class AppContainer extends Component {
                         this.setState({paginaAtual: 'contratar'})
                     }}>Contratar
                     </button>
-                    <button onClick={() => {
-                        this.setState({paginaAtual: 'cardGustavoServico'})
-                    }}>cardGustavoServico
-                    </button>
+                    <button onClick={() => {this.setState({paginaAtual: 'cardGustavoServico'})}}>cardGustavoServico</button>
 
                 </div>
                 {
@@ -94,37 +87,4 @@ export class AppContainer extends Component {
             </div>
         )
     }
-=======
-      case 'cardGustavoServico':
-        return <CardServico />
-  
-      default:
-        return <p>Erro</p>
-    }
-  }
-
-  render() {
-    return (
-      <StyledAppContainer>
-        <StyledHeader>          
-          <p>Esse header é só um teste!!!</p>
-          <div>
-            <button onClick={() => { this.setState({ paginaAtual: 'home' }) }}>Home</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'queroserumninja' }) }}>Quero ser um ninja</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'detalhes' }) }}>Detalhes</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'carrinho' }) }}>Carrinho</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'contratar' }) }}>Contratar</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'cardGustavoServico' }) }}>cardGustavoServico</button>
-
-          </div>
-        </StyledHeader>
-        <StyledMain>
-          {
-            this.paginaSelecionada()
-          }
-        </StyledMain>
-      </StyledAppContainer>
-    )
-  }
->>>>>>> master
 }
