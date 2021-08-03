@@ -1,5 +1,8 @@
-import React from 'react'
-import Styled from 'styled-components'
+import React from "react";
+import Styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { Input, Select, MenuItem, InputLabel, FormControl, Button } from '@material-ui/core';
 
 
@@ -10,8 +13,8 @@ const StyledContainerContratar = Styled.div`
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr 9fr;
     background: #25274D;
+`;
 
-`
 const StyledContainerControles = Styled.div`
     grid-column: 1 / 3;
     grid-row: 1 / 2;
@@ -19,7 +22,7 @@ const StyledContainerControles = Styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-`
+`;
 const StyledContainerBusca = Styled.div`
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -30,8 +33,8 @@ const StyledContainerBusca = Styled.div`
     padding-left: 5%;
     margin: 10px;
     min-width: 120px;
-    
-`
+`;
+
 const StyledInputBuscar = Styled(Input)`
     min-width: 10px;
     width: 80%;
@@ -66,14 +69,30 @@ const StyledContainerCards = Styled.div`
     justify-content: center;
     padding: 5px;
     margin: 10px 10px 0 10px;
-`
+`;
 const StyledCardServico = Styled.div`
     width: 32%;
     min-width: 300px;
     height: 200px;
     margin: 4px;
-    background: green;
-`
+    background: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #25274d;
+    h4, p {
+        margin: 10px;
+
+    }
+    font-size:1.4em; 
+    div {
+        display: flex;
+        width: 60%;
+        justify-content: space-around;
+        margin: 10px;
+    }
+`;
 
 
 
@@ -109,15 +128,12 @@ export default class Contratar extends React.Component {
                             <MenuItem value={30}>Thirty</MenuItem>
                         </Select>
                     </StyledFormControl>
-
-
                     <StyledInput
                         placeholder='Valor mínimo'
                     />
                     <StyledInput
                         placeholder='Valor mínimo'
                     />
-
                 </StyledContainerBusca>
 
                 <StyledContainerCards>
@@ -130,8 +146,7 @@ export default class Contratar extends React.Component {
                     <StyledCardServico />
                 </StyledContainerCards>
 
-
-            </StyledContainerContratar>
-        );
-    }
+      </StyledContainerContratar>
+    );
+  }
 }
