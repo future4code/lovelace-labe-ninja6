@@ -3,7 +3,8 @@ import React from 'react'
 export default class Home extends React.Component{
     render(){
         return <div>
-            <p>HOme</p>
+            <p>Home</p>
+            <button>Carrinho</button>
         </div>
     }
 }
