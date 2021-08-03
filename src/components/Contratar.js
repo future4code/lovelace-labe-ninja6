@@ -1,14 +1,15 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { Input, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Input, Select, MenuItem, InputLabel, FormControl, Button } from '@material-ui/core';
 
 
 const StyledContainerContratar = Styled.div`
     width: 100%;
+    min-height: 94.2vh;
     display: grid;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr 9fr;
+    background: #25274D;
 
 `
 const StyledContainerControles = Styled.div`
@@ -23,7 +24,7 @@ const StyledContainerBusca = Styled.div`
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     display: flex;
-    background: gray;
+    background: #AAABB8;
     flex-direction: column;
     align-items: flex-start;
     padding-left: 5%;
@@ -58,7 +59,7 @@ const StyledContainerCards = Styled.div`
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 
-    background: gray;
+    background: #AAABB8;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -83,7 +84,7 @@ export default class Contratar extends React.Component {
             <StyledContainerContratar>
 
                 <StyledContainerControles>
-                    <button>Voltar</button>
+                    <Button variant="outlined" color="primary">Voltar</Button>
                 </StyledContainerControles>
 
                 <StyledContainerBusca>
