@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Styled from 'styled-components'
 
 import CardServico from './CardServico'
-import Carrinho from './Carrinho'
+import Carrinho from './ComponentCarrinho/Carrinho'
 import Contratar from './Contratar'
 import Detalhes from './Detalhes'
-import Home from './Home'
+import Home from './ComponentHome/Home'
 import QueroSerUmNinja from './QueroSerUmNinja'
 
 const StyledAppContainer = Styled.div`
@@ -23,56 +23,68 @@ const StyledMain = Styled.main`
 
 export class AppContainer extends Component {
 
-  state = {
-    paginaAtual: 'home'
-  }
-
-  paginaSelecionada = () => {
-    switch (this.state.paginaAtual) {
-      case 'home':
-        return <Home />
-    
-      case 'queroserumninja':
-        return <QueroSerUmNinja />
-
-      case 'detalhes':
-        return <Detalhes />
-
-      case 'carrinho':
-        return <Carrinho />
-
-      case 'contratar':
-        return <Contratar />
-
-      case 'cardGustavoServico':
-        return <CardServico />
-  
-      default:
-        return <p>Erro</p>
+    state = {
+        paginaAtual: 'home'
     }
-  }
 
-  render() {
-    return (
-      <StyledAppContainer>
-        <StyledHeader>          
-          <p>Esse header é só um teste!!!</p>
-          <div>
-            <button onClick={() => { this.setState({ paginaAtual: 'home' }) }}>Home</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'queroserumninja' }) }}>Quero ser um ninja</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'detalhes' }) }}>Detalhes</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'carrinho' }) }}>Carrinho</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'contratar' }) }}>Contratar</button>
-            <button onClick={() => { this.setState({ paginaAtual: 'cardGustavoServico' }) }}>cardGustavoServico</button>
+    paginaSelecionada = () => {
+        switch (this.state.paginaAtual) {
+            case 'home':
+                return <Home/>
 
-          </div>
-        </StyledHeader>
-        <StyledMain>
-          {
-            this.paginaSelecionada()
-          }
-        </StyledMain>
-      </StyledAppContainer>
-    )
-  }
+            case 'queroserumninja':
+                return <QueroSerUmNinja/>
+
+            case 'detalhes':
+                return <Detalhes/>
+
+            case 'carrinho':
+                return <Carrinho/>
+
+
+            case 'contratar':
+                return <Contratar/>
+
+            case 'cardGustavoServico':
+                return <CardServico/>
+
+            default:
+                return <p>Erro</p>
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <p>Pronto para começar!</p>
+                <div>
+                    <button onClick={() => {
+                        this.setState({paginaAtual: 'home'})
+                    }}>Home
+                    </button>
+                    <button onClick={() => {
+                        this.setState({paginaAtual: 'queroserumninja'})
+                    }}>Quero ser um ninja
+                    </button>
+                    <button onClick={() => {
+                        this.setState({paginaAtual: 'detalhes'})
+                    }}>Detalhes
+                    </button>
+                    <button onClick={() => {
+                        this.setState({paginaAtual: 'carrinho'})
+                    }}>Carrinho
+                    </button>
+                    <button onClick={() => {
+                        this.setState({paginaAtual: 'contratar'})
+                    }}>Contratar
+                    </button>
+                    <button onClick={() => {this.setState({paginaAtual: 'cardGustavoServico'})}}>cardGustavoServico</button>
+
+                </div>
+                {
+                    this.paginaSelecionada()
+                }
+            </div>
+        )
+    }
 }
