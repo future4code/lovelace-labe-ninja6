@@ -114,9 +114,9 @@ export default class QueroSerUmNinja extends React.Component {
       <div>
         <main>
           <EstiloMain>
-            <Button onClick={this.props.onClickVoltar} variant="contained">
-              Voltar
-            </Button>
+            <Button
+              onClick={this.props.BotaoVoltar}
+              variant="contained">Voltar</Button>
 
             <TextField
               id="outlined-basic"
