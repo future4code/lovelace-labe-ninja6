@@ -146,14 +146,20 @@ export default class QueroSerUmNinja extends React.Component {
                 </Select>
               </div>
             </EstiloFormasPagato>
+
             <TextField
-              id="outlined-basic"
-              label="Prazo"
-              variant="outlined"
-              type="date"
-              value={this.state.prazo}
-              onChange={this.alteraInputPrazo}
+                    id="date"
+                    label="Prazo"
+                    type="date"
+                    defaultValue={new Date()}
+                    variant="outlined"
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    value={this.state.prazo}
+                    onChange={this.alteraInputPrazo}
             />
+
             <Button
               onClick={this.adicionaServico}
               variant="contained"
