@@ -105,7 +105,6 @@ export default class QueroSerUmNinja extends React.Component {
       })
       .catch((erro) => {
         alert(erro);
-        console.log(erro);
       });
   };
 
@@ -114,9 +113,9 @@ export default class QueroSerUmNinja extends React.Component {
       <div>
         <main>
           <EstiloMain>
-            <Button
-              onClick={this.props.BotaoVoltar}
-              variant="contained">Voltar</Button>
+            <Button onClick={this.props.BotaoVoltar} variant="contained">
+              Voltar
+            </Button>
 
             <TextField
               id="outlined-basic"
