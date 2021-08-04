@@ -81,11 +81,10 @@ export default class QueroSerUmNinja extends React.Component {
     axios
       .post(url, body, headers)
       .then((resp) => {
-        alert("Sucesso", resp);
+        alert("Cadastrado com sucesso");
       })
       .catch((erro) => {
-        alert(erro);
-        console.log(erro);
+        alert(erro.response.data.message);
       });
   };
 
