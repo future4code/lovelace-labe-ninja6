@@ -10,18 +10,7 @@ ContainerHome: styled.div`
     background-color: #25274D;    
 `,
 
-Header : styled.header`
-    display: flex;
-    color: white;
-    align-items: center;
-    background-color: #464866;
-    height: 60px;
-`,
-LogoPeq : styled.img`
-    height: 45px;
-    margin-left: 15px;
-    margin-right: 15px;
-`,
+
 
 ContainerLogoGrande : styled.div`
     display: flex;

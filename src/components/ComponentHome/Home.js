@@ -7,12 +7,7 @@ import {HomeStyles} from './Home.styles.js';
 export default class Home extends React.Component{
     render(){
         return <HomeStyles.ContainerHome>
-            <HomeStyles.Header>
-        
-                <HomeStyles.LogoPeq src={logoNinjas} alt="Logo da LabeNinjas"/>
-                <h2>LabeNinjas</h2>
-           
-            </HomeStyles.Header>
+
 
             <HomeStyles.ContainerLogoGrande>
             <HomeStyles.LogoGrande src={logoNinjasGrande} alt="Logo da LabeNinjas Grande"/>
