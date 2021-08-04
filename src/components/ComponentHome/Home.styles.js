@@ -10,8 +10,6 @@ ContainerHome: styled.div`
     background-color: #25274D;    
 `,
 
-
-
 ContainerLogoGrande : styled.div`
     display: flex;
     justify-content: center;
@@ -28,6 +26,11 @@ ContainerLogoGrande : styled.div`
     display: flex;
     justify-content: space-evenly;
     margin: 10px 400px;
+
+    Button {
+        background-color: #29648A;
+        color: white;
+    }
 `
 }
 

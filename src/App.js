@@ -13,7 +13,8 @@ import Home from './components/ComponentHome/Home'
 import QueroSerUmNinja from './components/QueroSerUmNinja'
 
 //Images
-import logoNinjas from "./img/logo-peq.jpg";
+import logoNinjas from "./img/logo_header.png";
+
 
 class App extends React.Component{
 	state = {
@@ -24,18 +25,12 @@ class App extends React.Component{
 		return (
 			<ThemeProvider theme={theme}>
 				<HomeStyles.Header>
-
 					<HomeStyles.LogoPeq src={logoNinjas} alt="Logo da LabeNinjas"/>
-					<h2>LabeNinjas</h2>
-
 				</HomeStyles.Header>
 
 				<Home />
 
-
-
 				{/*<AppContainer />*/}
-
 			</ThemeProvider>
 		)
 	}

@@ -1,5 +1,4 @@
 import React from 'react'
-import logoNinjas from "../../img/logo-peq.jpg"
 import logoNinjasGrande from "../../img/logo-grande.png"
 import Button from '@material-ui/core/Button';
 import {HomeStyles} from './Home.styles.js';
