@@ -31,26 +31,7 @@ import { number } from "yargs";
 //     }
 //
 // `
-const EstiloMain = styled.div`
-display: flex;
-flex-direction: column;
-padding: 20%;
->button{
-    margin: 20px  auto;
-}
->div{
-    margin: 10px ;
-}
-`
-const EstiloFormasPagato = styled.div`
-    border: 1px solid #c3c3c9;
-    
-    label{
-        font-size: 23px;
-        margin-left: 10px;
-    }
-  }
-`;
+
 const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
@@ -132,7 +113,7 @@ export default class QueroSerUmNinja extends React.Component {
         <main>
           <EstiloMain>
             <Button
-              onClick={this.props.onClickVoltar}
+              onClick={this.props.BotaoVoltar}
               variant="contained">Voltar</Button>
 
             <TextField
