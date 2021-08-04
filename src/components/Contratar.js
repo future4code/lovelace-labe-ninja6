@@ -113,6 +113,10 @@ const StyledCardServico = Styled.div`
 export default class Contratar extends React.Component {
   state = {
     listaDeServicos: [],
+    inputBuscar: '',
+    inputOrdenar: '',
+    inputValorMinimo: -Infinity,
+    inputValorMaximo: Infinity
   };
 
   componentDidMount() {
@@ -131,7 +135,6 @@ export default class Contratar extends React.Component {
       .get(url, headers)
       .then((resp) => {
         this.setState({ listaDeServicos: resp.data.jobs });
-        console.log(this.state.listaDeServicos);
       })
       .catch((erro) => {
         alert(erro);
@@ -139,10 +142,54 @@ export default class Contratar extends React.Component {
   };
 
   render() {
-    const listaFinalServicos = this.state.listaDeServicos.map((servico) => {
+    const listaFiltrada = this.state.listaDeServicos.filter( produto => {
+                            const aProcurar = produto.title.toLowerCase()
+                            return aProcurar.includes((this.state.inputBuscar).toLowerCase())  
+                        
+                        }).filter(produto => {
+                            return produto.price < this.state.inputValorMaximo
+                        
+                        }).filter(produto => {
+                            return produto.price > this.state.inputValorMinimo
+                        
+                        }).sort( (produtoA, produtoB) => {
+                            if(produtoA===produtoB)
+                                return 0;
+
+                            switch (this.state.inputOrdenar) {
+                                case 'titulo':
+                                    if((produtoA.title).toLowerCase() > (produtoB.title).toLowerCase())
+                                        return 1;
+                                    else
+                                        return -1;
+                            
+                                case 'precoCrescente':
+                                    if(produtoA.price > produtoB.price)
+                                        return 1;
+                                    else
+                                        return -1;
+
+                                case 'precoDecrescente':
+                                    if(produtoA.price < produtoB.price)
+                                        return 1;
+                                    else
+                                        return -1;
+
+                                case 'prazo':
+                                    if(Date.parse(produtoA.dueDate) > Date.parse(produtoB.dueDate))
+                                        return 1;
+                                    else
+                                        return -1;
+
+                                default:
+                                    break;
+                            }
+                        })
+
+    const listaFinalServicos = listaFiltrada.map((servico) => {
       const date = new Date(servico.dueDate)
       return (
-        <StyledCardServico>
+        <StyledCardServico key={servico.id}>
           <h4>{servico.title}</h4>
           <p>
 
@@ -177,28 +224,51 @@ export default class Contratar extends React.Component {
         </StyledContainerControles>
 
         <StyledContainerBusca>
-          <StyledInputBuscar placeholder="Buscar" />
+          <StyledInputBuscar 
+            placeholder="Buscar" 
+            value={this.state.inputBuscar}
+            onChange={e => this.setState({inputBuscar: e.target.value})}
+            />
 
           <StyledFormControl variant="filled">
-            <InputLabel id="demo-simple-select-filled-label">
+            <InputLabel 
+                id="demo-simple-select-filled-label"
+            >
               Ordenar
             </InputLabel>
             <Select
               labelId="demo-simple-select-filled-label"
-              id="demo-simple-select-filled"
-              // value={age}
-              // onChange={handleChange}
+              id="ordenar"
+              value={this.state.inputOrdenar}
+              onChange={e => this.setState({ inputOrdenar: e.target.value })}
             >
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value='precoCrescente'>Preço - Crescente</MenuItem>
+              <MenuItem value='precoDecrescente'>Preço - Decrescente</MenuItem>
+              <MenuItem value='prazo'>Prazo</MenuItem>
+              <MenuItem value='titulo'>Título</MenuItem>
             </Select>
           </StyledFormControl>
-          <StyledInput placeholder="Valor mínimo" />
-          <StyledInput placeholder="Valor mínimo" />
+          <StyledInput 
+            placeholder="Valor máximo" 
+            onChange={e => {
+                if(e.target.value)
+                    this.setState({ inputValorMaximo: Number(e.target.value) })
+                else
+                    this.setState({ inputValorMaximo: Infinity })
+            }}
+            />
+          <StyledInput 
+            placeholder="Valor mínimo" 
+            onChange={e => {
+                if(e.target.value)
+                    this.setState({ inputValorMinimo: Number(e.target.value) })
+                else
+                    this.setState({ inputValorMinimo: -Infinity })
+            }}
+            />
         </StyledContainerBusca>
 
         <StyledContainerCards>{listaFinalServicos}</StyledContainerCards>
