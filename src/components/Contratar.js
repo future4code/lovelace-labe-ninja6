@@ -3,8 +3,14 @@ import Styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import { Input, Select, MenuItem, InputLabel, FormControl, Button } from '@material-ui/core';
-
+import {
+  Input,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Button,
+} from "@material-ui/core";
 
 const StyledContainerContratar = Styled.div`
     width: 100%;
@@ -42,21 +48,21 @@ const StyledInputBuscar = Styled(Input)`
     margin-bottom: 20px;
     padding-left: 10px;
     background: white;
-`
+`;
 const StyledFormControl = Styled(FormControl)`
     width: 50%;
     min-width: 100px;
     margin-top: 20px;
     background: white;
     padding: 5px;
-`
+`;
 const StyledInput = Styled(Input)`
     width: 50%;
     min-width: 100px;
     margin-top: 20px;
     padding-left: 10px;
     background: white;
-`
+`;
 
 const StyledContainerCards = Styled.div`
     grid-column: 2 / 3;
@@ -94,58 +100,65 @@ const StyledCardServico = Styled.div`
     }
 `;
 
-
-
 export default class Contratar extends React.Component {
-    render() {
+  render() {
+    return (
+      <StyledContainerContratar>
+        <StyledContainerControles>
+          <Button variant="outlined" color="primary">
+            Voltar
+          </Button>
+        </StyledContainerControles>
 
-        return (
-            <StyledContainerContratar>
+        <StyledContainerBusca>
+          <StyledInputBuscar placeholder="Buscar" />
 
-                <StyledContainerControles>
-                    <Button variant="outlined" color="primary">Voltar</Button>
-                </StyledContainerControles>
+          <StyledFormControl variant="filled">
+            <InputLabel id="demo-simple-select-filled-label">
+              Ordenar
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              // value={age}
+              // onChange={handleChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </StyledFormControl>
+          <StyledInput placeholder="Valor mínimo" />
+          <StyledInput placeholder="Valor mínimo" />
+        </StyledContainerBusca>
 
-                <StyledContainerBusca>
-                    <StyledInputBuscar
-                        placeholder='Buscar'
-                    />
-
-
-                    <StyledFormControl variant="filled">
-                        <InputLabel id="demo-simple-select-filled-label">Ordenar</InputLabel>
-                        <Select
-                        labelId="demo-simple-select-filled-label"
-                        id="demo-simple-select-filled"
-                        // value={age}
-                        // onChange={handleChange}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </StyledFormControl>
-                    <StyledInput
-                        placeholder='Valor mínimo'
-                    />
-                    <StyledInput
-                        placeholder='Valor mínimo'
-                    />
-                </StyledContainerBusca>
-
-                <StyledContainerCards>
-                    <StyledCardServico />
-                    <StyledCardServico />
-                    <StyledCardServico />
-                    <StyledCardServico />
-                    <StyledCardServico />
-                    <StyledCardServico />
-                    <StyledCardServico />
-                </StyledContainerCards>
-
+        <StyledContainerCards>
+          <StyledCardServico>
+            <h4>Título do Serviço</h4>
+            <p>
+              Prazo por <strong>Preço</strong>
+            </p>
+            <div>
+              <Button variant="contained">Ver detalhes</Button>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<AddShoppingCartIcon />}
+              >
+                Adicionar
+              </Button>
+            </div>
+          </StyledCardServico>
+          <StyledCardServico />
+          <StyledCardServico />
+          <StyledCardServico />
+          <StyledCardServico />
+          <StyledCardServico />
+          <StyledCardServico />
+        </StyledContainerCards>
       </StyledContainerContratar>
     );
   }
