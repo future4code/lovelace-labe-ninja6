@@ -1,10 +1,9 @@
 import React from 'react'
 import * as HomeStyles from "./App.styles"
-import {ThemeProvider} from "@material-ui/styles";
-import {theme} from "./theme";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./theme";
 
 //Componentes
-// import { AppContainer } from './components/AppContainer'
 import CardServico from './components/CardServico'
 import Carrinho from './components/ComponentCarrinho/Carrinho'
 import Contratar from './components/Contratar'
@@ -16,24 +15,58 @@ import QueroSerUmNinja from './components/QueroSerUmNinja'
 import logoNinjas from "./img/logo_header.png";
 
 
-class App extends React.Component{
-	state = {
+class App extends React.Component {
+    state = {
+        paginaAtual: 'home'
+    }
 
-	}
+    paginaSelecionada = () => {
+        switch (this.state.paginaAtual) {
+            case 'home':
+                return <Home
+                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
+                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
+                />
 
-	render() {
-		return (
-			<ThemeProvider theme={theme}>
-				<HomeStyles.Header>
-					<HomeStyles.LogoPeq src={logoNinjas} alt="Logo da LabeNinjas"/>
-				</HomeStyles.Header>
+            case 'queroserumninja':
+                return <QueroSerUmNinja
+                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
+                />
 
-				<Home />
+            case 'detalhes':
+                return <Detalhes />
 
-				{/*<AppContainer />*/}
-			</ThemeProvider>
-		)
-	}
+            case 'carrinho':
+                return <Carrinho />
+
+
+            case 'contratar':
+                return <Contratar
+                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
+                />
+
+            case 'cardGustavoServico':
+                return <CardServico />
+
+            default:
+                return <p>Erro</p>
+        }
+    }
+
+
+    render() {
+        return (
+            <ThemeProvider theme={theme}>
+                <HomeStyles.Header>
+                    <HomeStyles.LogoPeq src={logoNinjas} alt="Logo da LabeNinjas" />
+                </HomeStyles.Header>
+
+
+                {this.paginaSelecionada("home")}
+
+            </ThemeProvider>
+        )
+    }
 }
 
 export default App
