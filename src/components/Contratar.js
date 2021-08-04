@@ -19,7 +19,6 @@ const StyledContainerContratar = Styled.div`
     display: grid;
     grid-template-columns: 1fr 5fr;
     grid-template-rows: 1fr 9fr;
-    background: #25274D;
 `;
 
 const StyledContainerControles = Styled.div`
@@ -200,10 +199,10 @@ export default class Contratar extends React.Component {
                 onClick={this.props.VerDetalhes}
                 variant="contained">Ver detalhes</Button>
             <Button
+                onClick={this.props.AddCarrinho}
               variant="contained"
               color="primary"
-              startIcon={<AddShoppingCartIcon />}
-            >
+              startIcon={<AddShoppingCartIcon />}>
               Adicionar
             </Button>
           </div>

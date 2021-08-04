@@ -8,22 +8,49 @@ import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  Button {
+    margin: 20px auto;
+  }
+`
 const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 100px;
+  padding: 20px;
   justify-content: center;
-  > button {
+  background-color: #AAABB8;
+  border-radius: 5px;
+  width: 70%;
+  margin: 0px auto;
+  
+  h2{
     margin: 20px auto;
+    font-size: 40px;
+    font-weight: 600;
+    color: #25274D;
+
   }
+
+  > Button {
+    margin: 20px auto;
+    color: #AAABB8;
+
+  }
+
   > div {
     margin: 10px;
   }
 `;
 
 const EstiloFormasPagato = styled.div`
-  border: 1px solid #c3c3c9;
-
+  border: 1px solid #25274D;
+  color: #25274D;
   label {
     font-size: 23px;
     margin-left: 10px;
@@ -80,21 +107,24 @@ export default class QueroSerUmNinja extends React.Component {
     axios
       .post(url, body, headers)
       .then((resp) => {
-        alert("Cadastrado com sucesso");
+        alert("Sucesso", resp);
       })
       .catch((erro) => {
-        alert(erro.response.data.message);
+        alert(erro);
       });
   };
 
   render() {
     return (
       <div>
-        <main>
+        <MainContainer>
+          <Button onClick={this.props.BotaoVoltar} variant="contained">
+            Voltar
+          </Button>
+
           <EstiloMain>
-            <Button onClick={this.props.BotaoVoltar} variant="contained">
-              Voltar
-            </Button>
+
+            <h2>Cadastre seu serviço</h2>
 
             <TextField
               id="outlined-basic"
@@ -131,14 +161,10 @@ export default class QueroSerUmNinja extends React.Component {
                   id="demo-simple-select-outlined"
                   value={this.state.formasPagato}
                   onChange={this.handleChange}
-                  label="Formas de pagamentos"
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value="cartão de crédito">
-                    Cartão de crédito
-                  </MenuItem>
+                  label="Formas de pagamentos">
+
+
+                  <MenuItem value="cartão de crédito">Cartão de crédito</MenuItem>
                   <MenuItem value="cartão de débito">Cartão de débito</MenuItem>
                   <MenuItem value="pix">Pix</MenuItem>
                   <MenuItem value="paypal">PayPal</MenuItem>
@@ -148,16 +174,16 @@ export default class QueroSerUmNinja extends React.Component {
             </EstiloFormasPagato>
 
             <TextField
-                    id="date"
-                    label="Prazo"
-                    type="date"
-                    defaultValue={new Date()}
-                    variant="outlined"
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                    value={this.state.prazo}
-                    onChange={this.alteraInputPrazo}
+              id="date"
+              label="Prazo"
+              type="date"
+              defaultValue={new Date()}
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              value={this.state.prazo}
+              onChange={this.alteraInputPrazo}
             />
 
             <Button
@@ -168,7 +194,7 @@ export default class QueroSerUmNinja extends React.Component {
               Cadastrar
             </Button>
           </EstiloMain>
-        </main>
+        </MainContainer>
       </div>
     );
   }

@@ -9,7 +9,13 @@ export default class Carrinho extends React.Component {
     render() {
         return (
             <All.ContainerItem>
-                
+                <Button
+                    onClick={this.props.BotaoVoltar}
+                    variant="outlined"
+                    color="primary">
+                    Voltar
+                </Button>
+
                 <All.Items>
                     <h3>Titulo do serviço</h3>
 

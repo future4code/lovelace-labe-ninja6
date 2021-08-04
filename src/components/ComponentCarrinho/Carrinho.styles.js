@@ -5,10 +5,23 @@ export const ContainerItem = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 60%;
+  width: 70%;
   //border: 1px solid #000;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
+
+  button {
+    background: #AAABB8;
+    color: #29648A;
+    font-weight: 700;
+    border-radius: 5px;
+    margin: 20px 0;
+
+    :hover {
+      background: #29648A;
+      color: #AAABB8;
+    }
+  }
 `
 
 export const Items = styled.div`
@@ -27,7 +40,11 @@ export const Items = styled.div`
     justify-content: space-between;
 
     //border: 1px solid #000;
-    width: 30%;
+    width: 35%;
+
+    p {
+      font-weight: 600;
+    }
 
     Button {
       border: 2px solid #2E9CCA;
@@ -46,23 +63,23 @@ export const Total = styled.div`
   margin-top: 20px;
   padding: 10px;
   //border: 1px solid #000;
-  
-  h3{
-     color: #2E9CCA;
+
+  h3 {
+    color: #2E9CCA;
     font-weight: 400;
-    
-    span{
+
+    span {
       font-weight: 700;
     }
   }
-  
+
   Button {
     background: #29648A;
     color: #AAABB8;
     font-weight: 700;
     border-radius: 5px;
-    
-    :hover{
+
+    :hover {
       background: #29648A;
       color: #AAABB8;
     }
