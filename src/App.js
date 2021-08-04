@@ -33,12 +33,15 @@ class App extends React.Component {
                 />
 
             case 'carrinho':
-                return <Carrinho />
+                return <Carrinho
+                    BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
+                />
 
             case 'contratar':
                 return <Contratar
                     BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                     VerDetalhes={() => this.setState({ paginaAtual: "verdetalhes" })}
+                    AddCarrinho={() => this.setState({ paginaAtual: "carrinho" })}
                 />
 
             case 'verdetalhes':
