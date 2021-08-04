@@ -1,7 +1,7 @@
 import React from 'react'
 import * as HomeStyles from "./App.styles"
-import {ThemeProvider} from "@material-ui/styles";
-import {theme} from "./theme";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./theme";
 
 //Componentes
 import CardServico from './components/CardServico'
@@ -12,7 +12,8 @@ import Home from './components/ComponentHome/Home'
 import QueroSerUmNinja from './components/QueroSerUmNinja'
 
 //Images
-import logoNinjas from "./img/logo-peq.jpg";
+import logoNinjas from "./img/logo_header.png";
+
 
 class App extends React.Component {
     state = {
@@ -23,29 +24,29 @@ class App extends React.Component {
         switch (this.state.paginaAtual) {
             case 'home':
                 return <Home
-                    onClickQueroSerNinja={() => this.setState({paginaAtual: "queroserumninja"})}
-                    onClickContratarNinjas={() => this.setState({paginaAtual: "contratar"})}
+                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
+                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
                 />
 
             case 'queroserumninja':
                 return <QueroSerUmNinja
-                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
+                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                 />
 
             case 'detalhes':
-                return <Detalhes/>
+                return <Detalhes />
 
             case 'carrinho':
-                return <Carrinho/>
+                return <Carrinho />
 
 
             case 'contratar':
                 return <Contratar
-                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
+                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                 />
 
             case 'cardGustavoServico':
-                return <CardServico/>
+                return <CardServico />
 
             default:
                 return <p>Erro</p>
@@ -57,10 +58,7 @@ class App extends React.Component {
         return (
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
-
-                    <HomeStyles.LogoPeq src={logoNinjas} alt="Logo da LabeNinjas"/>
-                    <h2>LabeNinjas</h2>
-
+                    <HomeStyles.LogoPeq src={logoNinjas} alt="Logo da LabeNinjas" />
                 </HomeStyles.Header>
 
 

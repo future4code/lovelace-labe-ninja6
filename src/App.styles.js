@@ -4,7 +4,7 @@ export const Header = styled.header`
     display: flex;
     color: white;
     align-items: center;
-    background-color: #464866;
+    background-color: #AAABB8;
     height: 60px;
 `
 export const LogoPeq = styled.img`
