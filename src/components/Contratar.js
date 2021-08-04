@@ -140,11 +140,13 @@ export default class Contratar extends React.Component {
 
   render() {
     const listaFinalServicos = this.state.listaDeServicos.map((servico) => {
+      const date = new Date(servico.dueDate)
       return (
         <StyledCardServico>
           <h4>{servico.title}</h4>
           <p>
-            Prazo: {servico.dueDate} por apenas <strong>{servico.price}</strong>
+
+            Prazo: {date.getDate()+ "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>{servico.price}</strong>
           </p>
           <div>
             <Button
