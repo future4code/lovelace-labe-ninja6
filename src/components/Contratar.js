@@ -28,7 +28,9 @@ const StyledContainerControles = Styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    border: 2px solid #000;
 `;
+
 const StyledContainerBusca = Styled.div`
     grid-column: 1 / 2;
     grid-row: 2 / 3;
@@ -105,7 +107,9 @@ export default class Contratar extends React.Component {
     return (
       <StyledContainerContratar>
         <StyledContainerControles>
-          <Button variant="outlined" color="primary">
+          <Button
+
+              variant="outlined" color="primary">
             Voltar
           </Button>
         </StyledContainerControles>
