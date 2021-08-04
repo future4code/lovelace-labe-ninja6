@@ -40,7 +40,9 @@ class App extends React.Component {
 
 
             case 'contratar':
-                return <Contratar/>
+                return <Contratar
+                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
+                />
 
             case 'cardGustavoServico':
                 return <CardServico/>
