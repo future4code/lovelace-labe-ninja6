@@ -1,16 +1,17 @@
 import React from "react";
 import Styled from "styled-components";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import {
-    Input,
-    Select,
-    MenuItem,
-    InputLabel,
-    FormControl,
-    Button,
+  Input,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Button,
 } from "@material-ui/core";
+import axios from "axios";
 
 const StyledContainerContratar = Styled.div`
     width: 100%;
@@ -110,67 +111,94 @@ const StyledCardServico = Styled.div`
 `;
 
 export default class Contratar extends React.Component {
-    render() {
-        return (
-            <StyledContainerContratar>
-                <StyledContainerControles>
-                    <Button
-                        onClick={this.props.BotaoVoltar}
-                        variant="outlined" color="primary">
-                        Voltar
-                    </Button>
-                </StyledContainerControles>
+  state = {
+    listaDeServicos: [],
+  };
 
-                <StyledContainerBusca>
-                    <StyledInputBuscar placeholder="Buscar"/>
+  componentDidMount() {
+    this.mostraALista();
+  }
 
-                    <StyledFormControl variant="filled">
-                        <InputLabel id="demo-simple-select-filled-label">
-                            Ordenar
-                        </InputLabel>
-                        <Select
-                            labelId="demo-simple-select-filled-label"
-                            id="demo-simple-select-filled"
-                            // value={age}
-                            // onChange={handleChange}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </StyledFormControl>
-                    <StyledInput placeholder="Valor mínimo"/>
-                    <StyledInput placeholder="Valor mínimo"/>
-                </StyledContainerBusca>
+  mostraALista = () => {
+    const url = "https://labeninjas.herokuapp.com/jobs";
+    const headers = {
+      headers: {
+        Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+      },
+    };
 
-                <StyledContainerCards>
-                    <StyledCardServico>
-                        <h4>Título do Serviço</h4>
-                        <p>
-                            Prazo por <strong>Preço</strong>
-                        </p>
-                        <div>
-                            <Button variant="contained">Ver detalhes</Button>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                startIcon={<AddShoppingCartIcon/>}
-                            >
-                                Adicionar
-                            </Button>
-                        </div>
-                    </StyledCardServico>
-                    <StyledCardServico/>
-                    <StyledCardServico/>
-                    <StyledCardServico/>
-                    <StyledCardServico/>
-                    <StyledCardServico/>
-                    <StyledCardServico/>
-                </StyledContainerCards>
-            </StyledContainerContratar>
-        );
-    }
+    axios
+      .get(url, headers)
+      .then((resp) => {
+        this.setState({ listaDeServicos: resp.data.jobs });
+        console.log(this.state.listaDeServicos);
+      })
+      .catch((erro) => {
+        alert(erro);
+      });
+  };
+
+  render() {
+    const listaFinalServicos = this.state.listaDeServicos.map((servico) => {
+      return (
+        <StyledCardServico>
+          <h4>{servico.title}</h4>
+          <p>
+            Prazo: {servico.dueDate} por apenas <strong>{servico.price}</strong>
+          </p>
+          <div>
+            <Button variant="contained">Ver detalhes</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<AddShoppingCartIcon />}
+            >
+              Adicionar
+            </Button>
+          </div>
+        </StyledCardServico>
+      );
+    });
+
+    return (
+      <StyledContainerContratar>
+        <StyledContainerControles>
+          <Button
+            onClick={this.props.BotaoVoltar}
+            variant="outlined"
+            color="primary"
+          >
+            Voltar
+          </Button>
+        </StyledContainerControles>
+
+        <StyledContainerBusca>
+          <StyledInputBuscar placeholder="Buscar" />
+
+          <StyledFormControl variant="filled">
+            <InputLabel id="demo-simple-select-filled-label">
+              Ordenar
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              // value={age}
+              // onChange={handleChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </StyledFormControl>
+          <StyledInput placeholder="Valor mínimo" />
+          <StyledInput placeholder="Valor mínimo" />
+        </StyledContainerBusca>
+
+        <StyledContainerCards>{listaFinalServicos}</StyledContainerCards>
+      </StyledContainerContratar>
+    );
+  }
 }
