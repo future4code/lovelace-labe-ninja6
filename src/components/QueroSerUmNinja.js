@@ -7,8 +7,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { number } from "yargs";
-
 
 const EstiloMain = styled.div`
   display: flex;

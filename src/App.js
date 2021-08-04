@@ -7,7 +7,6 @@ import { theme } from "./theme";
 import CardServico from './components/CardServico'
 import Carrinho from './components/ComponentCarrinho/Carrinho'
 import Contratar from './components/Contratar'
-import Detalhes from './components/Detalhes'
 import Home from './components/ComponentHome/Home'
 import QueroSerUmNinja from './components/QueroSerUmNinja'
 
@@ -33,20 +32,19 @@ class App extends React.Component {
                     BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                 />
 
-            case 'detalhes':
-                return <Detalhes />
-
             case 'carrinho':
                 return <Carrinho />
-
 
             case 'contratar':
                 return <Contratar
                     BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
+                    VerDetalhes={() => this.setState({ paginaAtual: "verdetalhes" })}
                 />
 
-            case 'cardGustavoServico':
-                return <CardServico />
+            case 'verdetalhes':
+                return <CardServico
+                    BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
+                />
 
             default:
                 return <p>Erro</p>
