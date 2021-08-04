@@ -7,29 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { number } from "yargs";
 
-// const Hearder = styled.div `
-//     background-color: #7869bf;
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-//     padding: 10px;
-//     min-width: 200px;
-//     height: 5vh;
-//     >div{
-//         background-color: #7869bf;
-//          display: flex;
-//         height: 100%;
-//         padding: 0 10px;
-//         align-items: center;
-//         >div{
-//             margin-left: 10px;
-//             color: #f6f4fa;
-//         }
-//     }
-//
-// `
 const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
@@ -102,10 +80,10 @@ export default class QueroSerUmNinja extends React.Component {
     axios
       .post(url, body, headers)
       .then((resp) => {
-        alert("Sucesso", resp);
+        alert("Cadastrado com sucesso");
       })
       .catch((erro) => {
-        alert(erro);
+        alert(erro.response.data.message);
       });
   };
 
@@ -168,14 +146,20 @@ export default class QueroSerUmNinja extends React.Component {
                 </Select>
               </div>
             </EstiloFormasPagato>
+
             <TextField
-              id="outlined-basic"
-              label="Prazo"
-              variant="outlined"
-              type="date"
-              value={this.state.prazo}
-              onChange={this.alteraInputPrazo}
+                    id="date"
+                    label="Prazo"
+                    type="date"
+                    defaultValue={new Date()}
+                    variant="outlined"
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
+                    value={this.state.prazo}
+                    onChange={this.alteraInputPrazo}
             />
+
             <Button
               onClick={this.adicionaServico}
               variant="contained"

@@ -187,14 +187,18 @@ export default class Contratar extends React.Component {
                         })
 
     const listaFinalServicos = listaFiltrada.map((servico) => {
+      const date = new Date(servico.dueDate)
       return (
         <StyledCardServico key={servico.id}>
           <h4>{servico.title}</h4>
           <p>
-            Prazo: {servico.dueDate} por apenas <strong>{servico.price}</strong>
+
+            Prazo: {date.getDate()+ "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>{servico.price}</strong>
           </p>
           <div>
-            <Button variant="contained">Ver detalhes</Button>
+            <Button
+                onClick={this.props.VerDetalhes}
+                variant="contained">Ver detalhes</Button>
             <Button
               variant="contained"
               color="primary"

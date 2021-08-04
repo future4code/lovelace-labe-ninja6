@@ -11,4 +11,5 @@ export const LogoPeq = styled.img`
     height: 45px;
     margin-left: 15px;
     margin-right: 15px;
+    cursor: pointer;
 `
