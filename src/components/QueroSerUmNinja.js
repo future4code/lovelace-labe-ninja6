@@ -8,27 +8,27 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 
 
-const Hearder = styled.div `
-    background-color: #7869bf;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    min-width: 200px;
-    height: 5vh;
-    >div{
-        background-color: #7869bf;
-         display: flex;
-        height: 100%;
-        padding: 0 10px;
-        align-items: center; 
-        >div{
-            margin-left: 10px;
-            color: #f6f4fa;
-        }
-    }
-    
-`
+// const Hearder = styled.div `
+//     background-color: #7869bf;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 10px;
+//     min-width: 200px;
+//     height: 5vh;
+//     >div{
+//         background-color: #7869bf;
+//          display: flex;
+//         height: 100%;
+//         padding: 0 10px;
+//         align-items: center;
+//         >div{
+//             margin-left: 10px;
+//             color: #f6f4fa;
+//         }
+//     }
+//
+// `
 const EstiloMain = styled.div `
 display: flex;
 flex-direction: column;
@@ -66,19 +66,14 @@ export default class QueroSerUmNinja extends React.Component{
         
 
         return <div>
-            
-            <Hearder>
-                <div>
-                    <img src='' alt='Logo'></img>
-                    <div>LabeNinjas</div>
-                </div>
-                
-            </Hearder>
+
             <main>
                 <EstiloMain>
                 
 
-                    <Button variant="contained" >
+                    <Button
+                        onClick={this.props.BotaoVoltar}
+                        variant="contained" >
                         Voltar
                     </Button>
                     <TextField id="outlined-basic" label="Título do serviço" variant="outlined" />

@@ -15,10 +15,14 @@ export default class Home extends React.Component{
             
             
             <HomeStyles.ContainerBotoes>
-            <Button variant="contained" color="primary">
+            <Button
+                onClick={this.props.onClickQueroSerNinja}
+                variant="contained" color="primary">
                 Quero ser um Ninja
             </Button>
-            <Button variant="contained" color="primary">
+            <Button
+                onClick={this.props.onClickContratarNinjas}
+                variant="contained" color="primary">
                 Contratar um Ninja
             </Button>
             
