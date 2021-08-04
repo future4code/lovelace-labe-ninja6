@@ -7,13 +7,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { number } from "yargs";
-
 
 const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20%;
+  padding: 100px;
+  justify-content: center;
   > button {
     margin: 20px auto;
   }
@@ -93,9 +92,9 @@ export default class QueroSerUmNinja extends React.Component {
       <div>
         <main>
           <EstiloMain>
-            <Button
-              onClick={this.props.BotaoVoltar}
-              variant="contained">Voltar</Button>
+            <Button onClick={this.props.BotaoVoltar} variant="contained">
+              Voltar
+            </Button>
 
             <TextField
               id="outlined-basic"
