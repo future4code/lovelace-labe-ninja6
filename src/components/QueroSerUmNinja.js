@@ -33,7 +33,8 @@ import { number } from "yargs";
 const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20%;
+  padding: 100px;
+  justify-content: center;
   > button {
     margin: 20px auto;
   }
