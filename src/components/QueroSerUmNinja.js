@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button";
 import axios from "axios";
 import { number } from "yargs";
 
-
 // const Hearder = styled.div `
 //     background-color: #7869bf;
 //     display: flex;
@@ -32,26 +31,6 @@ import { number } from "yargs";
 //
 // `
 const EstiloMain = styled.div`
-display: flex;
-flex-direction: column;
-padding: 20%;
->button{
-    margin: 20px  auto;
-}
->div{
-    margin: 10px ;
-}
-`
-const EstiloFormasPagato = styled.div`
-    border: 1px solid #c3c3c9;
-    
-    label{
-        font-size: 23px;
-        margin-left: 10px;
-    }
-  }
-`;
-const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20%;
@@ -62,6 +41,7 @@ const EstiloMain = styled.div`
     margin: 10px;
   }
 `;
+
 const EstiloFormasPagato = styled.div`
   border: 1px solid #c3c3c9;
 
@@ -81,11 +61,13 @@ export default class QueroSerUmNinja extends React.Component {
     titulo: "",
     preco: "",
     descricao: "",
-    formasPagato: "",
+    formasPagato: [],
     prazo: "",
   };
   handleChange = (event) => {
-    this.setState({ formasPagato: event.target.value });
+    const novoObjeto = event.target.value;
+    const novoArray = [novoObjeto];
+    this.setState({ formasPagato: novoArray });
   };
   alteraInputPreco = (event) => {
     this.setState({ preco: event.target.value });
@@ -107,12 +89,13 @@ export default class QueroSerUmNinja extends React.Component {
         Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
       },
     };
+    const precoNumero = parseFloat(this.state.preco);
     const body = {
       title: this.state.titulo,
       description: this.state.descricao,
-      price: number(this.state.preco),
+      price: precoNumero,
       paymentMethods: this.state.formasPagato,
-      dueDate: "2021-12-30",
+      dueDate: this.state.prazo,
     };
 
     axios
@@ -122,18 +105,18 @@ export default class QueroSerUmNinja extends React.Component {
       })
       .catch((erro) => {
         alert(erro);
+        console.log(erro);
       });
   };
 
   render() {
     return (
       <div>
-
         <main>
           <EstiloMain>
-            <Button
-              onClick={this.props.onClickVoltar}
-              variant="contained">Voltar</Button>
+            <Button onClick={this.props.onClickVoltar} variant="contained">
+              Voltar
+            </Button>
 
             <TextField
               id="outlined-basic"
@@ -175,14 +158,24 @@ export default class QueroSerUmNinja extends React.Component {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Cartão de crédito</MenuItem>
-                  <MenuItem value={20}>Cartão de débito</MenuItem>
-                  <MenuItem value={30}>Pix</MenuItem>
-                  <MenuItem value={40}>PayPal</MenuItem>
-                  <MenuItem value={50}>Boleto</MenuItem>
+                  <MenuItem value="cartão de crédito">
+                    Cartão de crédito
+                  </MenuItem>
+                  <MenuItem value="cartão de débito">Cartão de débito</MenuItem>
+                  <MenuItem value="pix">Pix</MenuItem>
+                  <MenuItem value="paypal">PayPal</MenuItem>
+                  <MenuItem value="boleto">Boleto</MenuItem>
                 </Select>
               </div>
             </EstiloFormasPagato>
+            <TextField
+              id="outlined-basic"
+              label="Prazo"
+              variant="outlined"
+              type="date"
+              value={this.state.prazo}
+              onChange={this.alteraInputPrazo}
+            />
             <Button
               onClick={this.adicionaServico}
               variant="contained"
