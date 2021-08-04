@@ -52,7 +52,9 @@ export default class CardServico extends React.Component {
             Adicionar ao Carrinho
           </Button>
           <br></br>
-          <Button variant="contained">Voltar para Lista de Serviços</Button>
+          <Button
+              onClick={this.props.BotaoVoltar}
+              variant="contained">Voltar para Lista de Serviços</Button>
         </ContainerServico>
       </ContaingerPagina>
     );

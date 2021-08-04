@@ -147,7 +147,9 @@ export default class Contratar extends React.Component {
             Prazo: {servico.dueDate} por apenas <strong>{servico.price}</strong>
           </p>
           <div>
-            <Button variant="contained">Ver detalhes</Button>
+            <Button
+                onClick={this.props.VerDetalhes}
+                variant="contained">Ver detalhes</Button>
             <Button
               variant="contained"
               color="primary"
