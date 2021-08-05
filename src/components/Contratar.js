@@ -122,6 +122,25 @@ export default class Contratar extends React.Component {
     this.mostraALista();
   }
 
+  adicionarCarrinho = async (id_job) => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${id_job}`;
+    const headers = {
+    headers: {
+            Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+        },
+    };
+    const body = {
+        taken: true
+    };
+    try {
+        const add = await axios.post(url, body, headers)
+        alert('Serviço adicionado com sucesso!')
+        await this.mostraALista()
+    } catch (erro) {
+        alert(erro.response.data.error)
+    }
+  }
+
   mostraALista = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
     const headers = {
@@ -151,7 +170,10 @@ export default class Contratar extends React.Component {
                         }).filter(produto => {
                             return produto.price > this.state.inputValorMinimo
                         
-                        }).sort( (produtoA, produtoB) => {
+                        }).filter(produto => {
+                          return produto.taken === false
+                      
+                      }).sort( (produtoA, produtoB) => {
                             if(produtoA===produtoB)
                                 return 0;
 
@@ -198,8 +220,8 @@ export default class Contratar extends React.Component {
             <Button
                 onClick={this.props.VerDetalhes}
                 variant="contained">Ver detalhes</Button>
-            <Button
-                onClick={this.props.AddCarrinho}
+            <Button id={servico.id}
+                onClick={() => this.adicionarCarrinho(servico.id)}
               variant="contained"
               color="primary"
               startIcon={<AddShoppingCartIcon />}>

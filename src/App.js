@@ -12,6 +12,7 @@ import QueroSerUmNinja from './components/QueroSerUmNinja'
 
 //Images
 import logoHeader from "./img/logo_header.png";
+import Axios from 'axios';
 
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
         paginaAtual: 'home'
     }
 
+    
     paginaSelecionada = () => {
         switch (this.state.paginaAtual) {
             case 'home':
@@ -60,6 +62,7 @@ class App extends React.Component {
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
                     <HomeStyles.LogoPeq onClick={() => this.setState({ paginaAtual: "home" })} src={logoHeader} alt="Logo da LabeNinjas" />
+                    <button onClick={()=> this.setState({paginaAtual: "carrinho"})}>Carrinho</button>
                 </HomeStyles.Header>
 
 
