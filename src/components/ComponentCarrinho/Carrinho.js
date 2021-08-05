@@ -4,78 +4,107 @@ import {Button} from "@material-ui/core";
 import axios from 'axios';
 
 
-
-
 export default class Carrinho extends React.Component {
     state = {
         carrinho: []
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.pegarListaCarrinho()
     }
+
     pegarListaCarrinho = () => {
         const url = "https://labeninjas.herokuapp.com/jobs";
         const headers = {
-                headers: {
-                    Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
-                },
-        };
+            headers: {
+                Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+            },
+        }
+
         axios
-      .get(url, headers)
-      .then((resp) => {
-        
-        
-        const jobsSelecionados = resp.data.jobs.filter((job) => {
-            return job.taken === true
-        })
-        this.setState({ carrinho:  jobsSelecionados});
-        
-      })
-      .catch((erro) => {
-        alert(erro);
-      });
+            .get(url, headers)
+            .then((resp) => {
+                const jobsSelecionados = resp.data.jobs.filter((job) => {
+                    return job.taken === true
+                })
+
+                this.setState({carrinho: jobsSelecionados});
+
+            })
+            .catch((erro) => {
+                alert(erro.response.data.error);
+            });
     };
+
     removerServico = async (event) => {
         const url = `https://labeninjas.herokuapp.com/jobs/${event.currentTarget.id}`;
         const headers = {
             headers: {
-                    Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
-                },
-            };
+                Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+            },
+        }
+
         const body = {
-                taken: false
-            };
+            taken: false
+        }
+
         try {
-            const rem = await axios.post(url, body, headers)
-            await this.pegarListaCarrinho()
+            await axios.post(url, body, headers)
+
             alert('Serviço removido com sucesso!')
+
+            await this.pegarListaCarrinho()
         } catch (erro) {
             alert(erro.response.data.error)
         }
     }
 
-    render() {
-
-        const totalCarrinho = () => {
-            let valorTotal = 0
-            for(let job of this.state.carrinho) {
-                valorTotal += job.price
-            }
-            return valorTotal
+    totalCarrinho = () => {
+        let valorTotal = 0
+        for (let job of this.state.carrinho) {
+            valorTotal += job.price
         }
+
+        return valorTotal.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'})
+    }
+
+    contratarServico = (carrinho) => {
+        carrinho.map((item) => {
+            const url = `https://labeninjas.herokuapp.com/jobs/${item.id}`;
+            const headers = {
+                headers: {
+                    Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+                },
+            }
+
+            axios.delete(url, headers)
+                .then((response) => {
+                    alert("Agradecemos por contratar com a gente!")
+                    this.pegarListaCarrinho()
+                }).catch((erro) => {
+                alert(erro.response.data.error)
+            })
+        })
+    }
+
+    render() {
         const listarJobs = this.state.carrinho.map((job) => {
-            return (
-                <ul>
-                    <li>
+            if (job.id) {
+                return (
+                    <All.Items key={job.id}>
                         <h3>{job.title}</h3>
+
                         <div>
-                            <p>R$ {job.price}</p>
+                            <p>{job.price.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'})}</p>
                             <Button id={job.id} onClick={this.removerServico} variant="contained">Remover</Button>
                         </div>
-                    </li>
-                </ul>
-            )
+                    </All.Items>
+                )
+            } else {
+                return false
+            }
         })
+
         return (
 
             <All.ContainerItem>
@@ -86,15 +115,26 @@ export default class Carrinho extends React.Component {
                     Voltar
                 </Button>
 
-                <All.Items>
-                    {listarJobs}
-                </All.Items>
+                {this.state.carrinho.length !== 0
+                    ? (
+                        <>
+                            {listarJobs}
 
-                <All.Total>
-                    <h3>Valor Total: <span>R$ {totalCarrinho()}</span></h3>
 
-                    <Button onClick='' variant="contained">Contratar Serviço</Button>
-                </All.Total>
+                            <All.Total>
+                                <h3>Valor Total: <span>{this.totalCarrinho()}</span></h3>
+
+                                <Button onClick={() => this.contratarServico(this.state.carrinho)} variant="contained">Contratar
+                                    Serviço</Button>
+                            </All.Total>
+                        </>
+                    )
+                    : (
+                        <All.CarrinhoVazio>
+                            <h2>Seu carrinho está vazio!</h2>
+                        </All.CarrinhoVazio>
+                    )
+                }
             </All.ContainerItem>
         )
     }

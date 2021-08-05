@@ -62,6 +62,8 @@ class App extends React.Component {
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
                     <HomeStyles.LogoPeq onClick={() => this.setState({ paginaAtual: "home" })} src={logoHeader} alt="Logo da LabeNinjas" />
+
+
                     <button onClick={()=> this.setState({paginaAtual: "carrinho"})}>Carrinho</button>
                 </HomeStyles.Header>
 
