@@ -109,6 +109,19 @@ const StyledCardServico = Styled.div`
     }
 `;
 
+const StyledLoading = Styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10vh;
+
+    p {
+      color: white;
+      font-size: 2rem;
+    }
+`
+
 export default class Contratar extends React.Component {
   state = {
     listaDeServicos: [],
@@ -141,6 +154,13 @@ export default class Contratar extends React.Component {
   };
 
   render() {
+    if(!this.state.listaDeServicos.length)
+      return (
+        <StyledLoading>
+          <p>Loading...</p>
+        </StyledLoading>
+      )
+
     const listaFiltrada = this.state.listaDeServicos.filter( produto => {
                             const aProcurar = produto.title.toLowerCase()
                             return aProcurar.includes((this.state.inputBuscar).toLowerCase())  
