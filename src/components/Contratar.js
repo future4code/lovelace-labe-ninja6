@@ -198,21 +198,6 @@ export default class Contratar extends React.Component {
   };
 
   render() {
-<<<<<<< HEAD
-    const listaFiltrada = this.state.listaDeServicos
-      .filter((produto) => {
-        const aProcurar = produto.title.toLowerCase();
-        return aProcurar.includes(this.state.inputBuscar.toLowerCase());
-      })
-      .filter((produto) => {
-        return produto.price < this.state.inputValorMaximo;
-      })
-      .filter((produto) => {
-        return produto.price > this.state.inputValorMinimo;
-      })
-      .sort((produtoA, produtoB) => {
-        if (produtoA === produtoB) return 0;
-=======
     if(!this.state.listaDeServicos.length)
       return (
         <StyledLoading>
@@ -233,7 +218,6 @@ export default class Contratar extends React.Component {
                         }).sort( (produtoA, produtoB) => {
                             if(produtoA===produtoB)
                                 return 0;
->>>>>>> f31cf0fbae7f9da0350278b849e203d2a69bfe8e
 
         switch (this.state.inputOrdenar) {
           case "titulo":
@@ -265,27 +249,17 @@ export default class Contratar extends React.Component {
         <StyledCardServico key={servico.id}>
           <h4>{servico.title}</h4>
           <p>
-<<<<<<< HEAD
-            Prazo:{" "}
-            {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()}{" "}
-            por apenas <strong>{servico.price}</strong>
-=======
             Prazo: {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>{servico.price}</strong>
->>>>>>> f31cf0fbae7f9da0350278b849e203d2a69bfe8e
           </p>
           <div>
             <Button onClick={this.props.VerDetalhes} variant="contained">
               Ver detalhes
             </Button>
             <Button
-<<<<<<< HEAD
-              onClick={this.props.AddCarrinho}
-=======
                 onClick={() => this.props.VerDetalhes(servico.id)}
                 variant="contained">Ver detalhes</Button>
             <Button
                 onClick={this.props.AddCarrinho}
->>>>>>> f31cf0fbae7f9da0350278b849e203d2a69bfe8e
               variant="contained"
               color="primary"
               startIcon={<AddShoppingCartIcon />}
