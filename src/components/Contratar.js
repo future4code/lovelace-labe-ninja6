@@ -133,10 +133,10 @@ export default class Contratar extends React.Component {
     axios
       .get(url, headers)
       .then((resp) => {
-        this.setState({ listaDeServicos: resp.data.jobs });
+        this.setState({listaDeServicos: resp.data.jobs});
       })
       .catch((erro) => {
-        alert(erro);
+        alert(erro.response.data.message);
       });
   };
 
@@ -191,12 +191,11 @@ export default class Contratar extends React.Component {
         <StyledCardServico key={servico.id}>
           <h4>{servico.title}</h4>
           <p>
-
-            Prazo: {date.getDate()+ "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>{servico.price}</strong>
+            Prazo: {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>{servico.price}</strong>
           </p>
           <div>
             <Button
-                onClick={this.props.VerDetalhes}
+                onClick={() => this.props.VerDetalhes(servico.id)}
                 variant="contained">Ver detalhes</Button>
             <Button
                 onClick={this.props.AddCarrinho}

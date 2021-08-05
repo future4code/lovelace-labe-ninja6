@@ -14,9 +14,33 @@ import QueroSerUmNinja from './components/QueroSerUmNinja'
 import logoHeader from "./img/logo_header.png";
 
 
+import axios from "axios";
+
+
 class App extends React.Component {
     state = {
-        paginaAtual: 'home'
+        paginaAtual: 'home',
+        job: []
+    }
+
+    getJobById = async (jobId) => {
+        const url = `https://labeninjas.herokuapp.com/jobs/${jobId}`
+        const headers = {
+            headers: {
+                Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+            },
+        };
+
+        try{
+            const response = await axios.get(url, headers)
+
+            this.setState({
+                paginaAtual: 'verdetalhes',
+                job: [response.data]
+            })
+        } catch (e){
+            alert(e.response.data.message)
+        }
     }
 
     paginaSelecionada = () => {
@@ -40,13 +64,14 @@ class App extends React.Component {
             case 'contratar':
                 return <Contratar
                     BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
-                    VerDetalhes={() => this.setState({ paginaAtual: "verdetalhes" })}
+                    VerDetalhes={this.getJobById}
                     AddCarrinho={() => this.setState({ paginaAtual: "carrinho" })}
                 />
 
             case 'verdetalhes':
                 return <CardServico
                     BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
+                    Job={this.state.job}
                 />
 
             default:
