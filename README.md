@@ -1,68 +1,104 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## README - Projeto LabeNinjas
 
-## Available Scripts
 
-In the project directory, you can run:
+## Link do Surge:
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## O que funciona:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Planejamento Inicial
 
-### `npm test`
+- Foi criado um board no Trello contendo todas as tarefas a serem feitas pelos integrantes do grupo
+- Todas as tarefas tiveram suas complexidades estimadas por pontos
+- Todas as tarefas tiveram uma definição de feito
+- Foram anexados materiais gráficos e links nos cards para facilitar o trabalho de quem pegar a tarefa
+- Todos os cards possuem descrições detalhadas do que precisa ser feito
+- Todas as tarefas tiveram um (ou mais) responsável(is).
+- Nosso board de Kanban contém as seguintes colunas:
+    - A fazer
+    - Em progresso
+    - Em teste
+    - Pronto
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Foi definido o layout de todas as páginas
+- Feito a definição da paleta de cores
+- Criado nova logo da empresa em conformidade com a paleta de cores
+- Foi planejado como iríamos cumprir todos os requisitos
+- Construído um wireframe (esqueleto do site) na plataforma Figma
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Implementações
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Foram criadas duas áreas separadas no site, uma destinada à criação dos serviços oferecidos e outra destinada à listagem e busca dessas ofertas.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Na parte de busca e listagem, o usuário é capaz de ver mais detalhes de uma oferta e decidir se deseja contratá-la. Também é possível que o usuário desista da contratação.
 
-### `npm run eject`
+- Implementado a funcionalidade do carrinho de compras, onde o usuário consegue adicionar propostas para contratá-las.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Toda proposta de serviço contém os seguintes campos: 
+- Título
+- Descrição
+- Valor da remuneração
+- Método(s) de pagamento oferecidos
+- Prazo
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Na listagem de trabalhos é possível:
+- Filtrar por:
+    - Valor mínimo e máximo
+    - Título ou descrição (busca)
+- Ordenar por:
+    - Título
+    - Valor da remuneração
+    - Prazo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Implementações Finais e Últimas Verificações
 
-## Learn More
+- Responsividade para celulares
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Colocar Loadings sempre que estiver carregando alguma requisição
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Construída interface fácil e intuitiva de se operar
 
-### Code Splitting
+- Realizada a integração com a API
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Revisado a indentação do código
 
-### Analyzing the Bundle Size
+- Nomenclatura de variáveis dentro do padrão
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Verificado se não foi deixado nenhum log ou registro desnecessário pelo código
 
-### Making a Progressive Web App
+- Verificado se isolamos constantes que se repetem em arquivos separados
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Implementado organização dos arquivos do projeto em pastas separadas
 
-### Advanced Configuration
+- Verificado se código mostra as mensagens de erro enviadas pelo back para o usuário, e não apenas no console
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Verificado uso adequado do this.setState
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+## O que não funciona:  `>>>>>  VERIFICAR E REVISAR !!!`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Não permitir que os itens sejam adicionados mais de uma vez
+
+- Manter os itens no carrinho mesmo que a página seja atualizada
+
+- ??? Função de deletar Serviço Cadastrado? `VERIFICAR !!!`
+
+
+### Prints do Site:
+![Texto referente a imagem](url da imagem)
+![Página Inicial](https://user-images.githubusercontent.com/85365177/128402822-fec3328c-67c5-4ca5-aac0-531285a2bd59.png)
+
+
+### Integrantes do Grupo:
+
+Gustavo Carvalho Guimarães
+Rafael Nascimento Silva
+Samyr Chiade Hissa Filho
+Tiago Harumitsu Kodama
+Rafael Fernandes Machado
+
+
+
