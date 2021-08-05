@@ -33,19 +33,19 @@ export const Items = styled.div`
   padding: 20px;
   background: #AAABB8;
   color: #2E9CCA;
-
+  margin: 10px auto;
+  border-radius: 5px;
+  
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     //border: 1px solid #000;
     width: 35%;
-
+    
     p {
       font-weight: 600;
     }
-
     Button {
       border: 2px solid #2E9CCA;
       color: #2E9CCA;
@@ -83,5 +83,21 @@ export const Total = styled.div`
       background: #29648A;
       color: #AAABB8;
     }
+  }
+`
+
+export const CarrinhoVazio = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  
+  h2{
+    color: #2E9CCA;
+    font-weight: 700;
+    font-size: 30px;
+    margin: 20px auto;
   }
 `
