@@ -153,6 +153,19 @@ const StyledCardServico = Styled.div`
     }
 `;
 
+const StyledLoading = Styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10vh;
+
+    p {
+      color: white;
+      font-size: 2rem;
+    }
+`
+
 export default class Contratar extends React.Component {
   state = {
     listaDeServicos: [],
@@ -177,14 +190,15 @@ export default class Contratar extends React.Component {
     axios
       .get(url, headers)
       .then((resp) => {
-        this.setState({ listaDeServicos: resp.data.jobs });
+        this.setState({listaDeServicos: resp.data.jobs});
       })
       .catch((erro) => {
-        alert(erro);
+        alert(erro.response.data.message);
       });
   };
 
   render() {
+<<<<<<< HEAD
     const listaFiltrada = this.state.listaDeServicos
       .filter((produto) => {
         const aProcurar = produto.title.toLowerCase();
@@ -198,6 +212,28 @@ export default class Contratar extends React.Component {
       })
       .sort((produtoA, produtoB) => {
         if (produtoA === produtoB) return 0;
+=======
+    if(!this.state.listaDeServicos.length)
+      return (
+        <StyledLoading>
+          <p>Loading...</p>
+        </StyledLoading>
+      )
+
+    const listaFiltrada = this.state.listaDeServicos.filter( produto => {
+                            const aProcurar = produto.title.toLowerCase()
+                            return aProcurar.includes((this.state.inputBuscar).toLowerCase())  
+                        
+                        }).filter(produto => {
+                            return produto.price < this.state.inputValorMaximo
+                        
+                        }).filter(produto => {
+                            return produto.price > this.state.inputValorMinimo
+                        
+                        }).sort( (produtoA, produtoB) => {
+                            if(produtoA===produtoB)
+                                return 0;
+>>>>>>> f31cf0fbae7f9da0350278b849e203d2a69bfe8e
 
         switch (this.state.inputOrdenar) {
           case "titulo":
@@ -229,16 +265,27 @@ export default class Contratar extends React.Component {
         <StyledCardServico key={servico.id}>
           <h4>{servico.title}</h4>
           <p>
+<<<<<<< HEAD
             Prazo:{" "}
             {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()}{" "}
             por apenas <strong>{servico.price}</strong>
+=======
+            Prazo: {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>{servico.price}</strong>
+>>>>>>> f31cf0fbae7f9da0350278b849e203d2a69bfe8e
           </p>
           <div>
             <Button onClick={this.props.VerDetalhes} variant="contained">
               Ver detalhes
             </Button>
             <Button
+<<<<<<< HEAD
               onClick={this.props.AddCarrinho}
+=======
+                onClick={() => this.props.VerDetalhes(servico.id)}
+                variant="contained">Ver detalhes</Button>
+            <Button
+                onClick={this.props.AddCarrinho}
+>>>>>>> f31cf0fbae7f9da0350278b849e203d2a69bfe8e
               variant="contained"
               color="primary"
               startIcon={<AddShoppingCartIcon />}
