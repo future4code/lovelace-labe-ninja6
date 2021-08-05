@@ -8,49 +8,56 @@ import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
-
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   Button {
     margin: 20px auto;
   }
-`
+`;
 const EstiloMain = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
   justify-content: center;
-  background-color: #AAABB8;
+  background-color: #aaabb8;
   border-radius: 5px;
   width: 70%;
   margin: 0px auto;
-  
-  h2{
+
+  h2 {
     margin: 20px auto;
     font-size: 40px;
     font-weight: 600;
-    color: #25274D;
-
+    color: #25274d;
   }
 
   > Button {
     margin: 20px auto;
-    color: #AAABB8;
-
+    color: #aaabb8;
   }
 
   > div {
     margin: 10px;
   }
+  @media (min-width: 0px) {
+    width: 95%;
+    margin: 4px;
+    Button {
+      margin: 4px;
+    }
+  }
+  @media (min-width: 768px) {
+    margin: 7px;
+  }
 `;
 
 const EstiloFormasPagato = styled.div`
-  border: 1px solid #25274D;
-  color: #25274D;
+  border: 1px solid #25274d;
+  color: #25274d;
   label {
     font-size: 23px;
     margin-left: 10px;
@@ -117,20 +124,17 @@ export default class QueroSerUmNinja extends React.Component {
       dueDate: this.state.prazo,
     };
 
-    console.log(body)
     axios
       .post(url, body, headers)
       .then((resp) => {
-        alert("Sucesso", resp);
+        alert("Serviço cadastrado com sucesso!");
       })
       .catch((erro) => {
-        alert(erro);
+        alert(erro.response.data.message);
       });
   };
 
   render() {
-
-    console.log(this.state.prazo)
     return (
       <div>
         <MainContainer>
@@ -139,7 +143,6 @@ export default class QueroSerUmNinja extends React.Component {
           </Button>
 
           <EstiloMain>
-
             <h2>Cadastre seu serviço</h2>
 
             <TextField
@@ -177,10 +180,11 @@ export default class QueroSerUmNinja extends React.Component {
                   id="demo-simple-select-outlined"
                   value={this.state.formasPagato}
                   onChange={this.handleChange}
-                  label="Formas de pagamentos">
-
-
-                  <MenuItem value="cartão de crédito">Cartão de crédito</MenuItem>
+                  label="Formas de pagamentos"
+                >
+                  <MenuItem value="cartão de crédito">
+                    Cartão de crédito
+                  </MenuItem>
                   <MenuItem value="cartão de débito">Cartão de débito</MenuItem>
                   <MenuItem value="pix">Pix</MenuItem>
                   <MenuItem value="paypal">PayPal</MenuItem>

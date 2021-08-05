@@ -1,14 +1,14 @@
-import React from 'react'
-import * as HomeStyles from "./App.styles"
-import { ThemeProvider } from "@material-ui/styles";
-import { theme } from "./theme";
-
+import React from "react";
+import * as HomeStyles from "./App.styles";
+import {ThemeProvider} from "@material-ui/styles";
+import {theme} from "./theme";
+import Grid from "@material-ui/core/Grid";
 //Componentes
-import CardServico from './components/CardServico'
-import Carrinho from './components/ComponentCarrinho/Carrinho'
-import Contratar from './components/Contratar'
-import Home from './components/ComponentHome/Home'
-import QueroSerUmNinja from './components/QueroSerUmNinja'
+import CardServico from "./components/CardServico";
+import Carrinho from "./components/ComponentCarrinho/Carrinho";
+import Contratar from "./components/Contratar";
+import Home from "./components/ComponentHome/Home";
+import QueroSerUmNinja from "./components/QueroSerUmNinja";
 
 //Images
 import logoHeader from "./img/logo_header.png";
@@ -31,14 +31,14 @@ class App extends React.Component {
             },
         };
 
-        try{
+        try {
             const response = await axios.get(url, headers)
 
             this.setState({
                 paginaAtual: 'verdetalhes',
                 job: [response.data]
             })
-        } catch (e){
+        } catch (e) {
             alert(e.response.data.message)
         }
     }
@@ -47,52 +47,50 @@ class App extends React.Component {
         switch (this.state.paginaAtual) {
             case 'home':
                 return <Home
-                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
-                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
+                    onClickQueroSerNinja={() => this.setState({paginaAtual: "queroserumninja"})}
+                    onClickContratarNinjas={() => this.setState({paginaAtual: "contratar"})}
                 />
 
             case 'queroserumninja':
                 return <QueroSerUmNinja
-                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
+                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
                 />
 
             case 'carrinho':
                 return <Carrinho
-                    BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
+                    BotaoVoltar={() => this.setState({paginaAtual: "contratar"})}
                 />
 
             case 'contratar':
                 return <Contratar
-                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
+                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
                     VerDetalhes={this.getJobById}
-                    AddCarrinho={() => this.setState({ paginaAtual: "carrinho" })}
+                    AddCarrinho={() => this.setState({paginaAtual: "carrinho"})}
                 />
 
             case 'verdetalhes':
                 return <CardServico
-                    BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
+                    BotaoVoltar={() => this.setState({paginaAtual: "contratar"})}
                     Job={this.state.job}
                 />
-
-            default:
-                return <p>Erro</p>
         }
     }
-
 
     render() {
         return (
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
-                    <HomeStyles.LogoPeq onClick={() => this.setState({ paginaAtual: "home" })} src={logoHeader} alt="Logo da LabeNinjas" />
+                    <HomeStyles.LogoPeq
+                        onClick={() => this.setState({paginaAtual: "home"})}
+                        src={logoHeader}
+                        alt="Logo da LabeNinjas"
+                    />
                 </HomeStyles.Header>
 
-
                 {this.paginaSelecionada("home")}
-
             </ThemeProvider>
-        )
+        );
     }
 }
 
-export default App
+export default App;
