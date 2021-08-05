@@ -69,14 +69,26 @@ const EstiloFormasPagato = styled.div`
   }
 `;
 
+const getCurrentDate = () => {
+  const data = new Date(Date.now())
+  const mes = ("0" + (data.getMonth() + 1)).slice(-2)
+  const ano = data.getFullYear()
+  let dia = Number(data.getDay()) + 2
+  dia = ("0" + dia.toString()).slice(-2)
+
+
+  return `${ano}-${mes}-${dia}`
+}
+
 export default class QueroSerUmNinja extends React.Component {
   state = {
     titulo: "",
     preco: "",
     descricao: "",
     formasPagato: [],
-    prazo: "",
+    prazo: getCurrentDate(),
   };
+
   handleChange = (event) => {
     const novoObjeto = event.target.value;
     const novoArray = [novoObjeto];
@@ -96,6 +108,7 @@ export default class QueroSerUmNinja extends React.Component {
   };
 
   adicionaServico = () => {
+
     const url = "https://labeninjas.herokuapp.com/jobs";
     const headers = {
       headers: {
@@ -114,10 +127,10 @@ export default class QueroSerUmNinja extends React.Component {
     axios
       .post(url, body, headers)
       .then((resp) => {
-        alert("Sucesso", resp);
+        alert("Serviço cadastrado com sucesso!");
       })
       .catch((erro) => {
-        alert(erro);
+        alert(erro.response.data.message);
       });
   };
 
@@ -184,7 +197,6 @@ export default class QueroSerUmNinja extends React.Component {
               id="date"
               label="Prazo"
               type="date"
-              defaultValue={new Date()}
               variant="outlined"
               InputLabelProps={{
                 shrink: true,
