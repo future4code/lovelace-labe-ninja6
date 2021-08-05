@@ -134,8 +134,8 @@ export default class Contratar extends React.Component {
     };
     try {
         const add = await axios.post(url, body, headers)
-        alert('Serviço adicionado com sucesso!')
         await this.mostraALista()
+        alert('Serviço adicionado com sucesso!')
     } catch (erro) {
         alert(erro.response.data.error)
     }

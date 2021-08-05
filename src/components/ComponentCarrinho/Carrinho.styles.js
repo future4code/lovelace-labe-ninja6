@@ -28,6 +28,7 @@ export const Items = styled.div`
   //border: 1px solid #000;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
@@ -40,7 +41,7 @@ export const Items = styled.div`
     justify-content: space-between;
 
     //border: 1px solid #000;
-    width: 35%;
+    width: 100%;
 
     p {
       font-weight: 600;
