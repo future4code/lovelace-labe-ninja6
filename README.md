@@ -1,10 +1,9 @@
-## README - Projeto LabeNinjas
+## README - Projeto:
+![Logo_LabeNinjas](https://user-images.githubusercontent.com/85365177/128575769-8421d053-b028-42b4-864e-bf570d1749b4.png)
 
 
-## Link do Surge:
+## Link do Surge:  `https://hesitant-boot.surge.sh/`
 
-
-## O que funciona:
 
 ### Planejamento Inicial
 
@@ -58,6 +57,10 @@ Na listagem de trabalhos é possível:
 
 - Colocar Loadings sempre que estiver carregando alguma requisição
 
+- Não permitir que os itens sejam adicionados mais de uma vez
+
+- Manter os itens no carrinho mesmo que a página seja atualizada
+
 - Construída interface fácil e intuitiva de se operar
 
 - Realizada a integração com a API
@@ -76,29 +79,28 @@ Na listagem de trabalhos é possível:
 
 - Verificado uso adequado do this.setState
 
+### Integrantes do Grupo:
 
+- Gustavo Carvalho Guimarães
 
-## O que não funciona:  `>>>>>  VERIFICAR E REVISAR !!!`
+- Rafael Nascimento Silva
 
-- Não permitir que os itens sejam adicionados mais de uma vez
+- Samyr Chiade Hissa Filho
 
-- Manter os itens no carrinho mesmo que a página seja atualizada
+- Tiago Harumitsu Kodama
 
-- ??? Função de deletar Serviço Cadastrado? `VERIFICAR !!!`
+- Rafael Fernandes Machado
 
 
 ### Prints do Site:
-![Texto referente a imagem](url da imagem)
 ![Página Inicial](https://user-images.githubusercontent.com/85365177/128402822-fec3328c-67c5-4ca5-aac0-531285a2bd59.png)
 
+![Cadastre seu Serviço](https://user-images.githubusercontent.com/85365177/128576145-a0d969ca-0ab1-45fa-8b51-f2e3d0d768d1.png)
 
-### Integrantes do Grupo:
+![Página Detalhes do Serviço](https://user-images.githubusercontent.com/85365177/128576662-bc1d8695-4b36-4a2a-9ec3-d85f3ed50fea.png)
 
-Gustavo Carvalho Guimarães
-Rafael Nascimento Silva
-Samyr Chiade Hissa Filho
-Tiago Harumitsu Kodama
-Rafael Fernandes Machado
+![Página do Carrinho](https://user-images.githubusercontent.com/85365177/128576880-93dc0d94-0113-4ebf-ae29-7b70d08dd57e.png)
+
 
 
 
