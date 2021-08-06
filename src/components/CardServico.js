@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
 const ContaingerPagina = styled.div`
@@ -75,14 +74,12 @@ export default class CardServico extends React.Component {
             return (
               <Servico key={job.id}>
                 <h1>{job.title}</h1>
-
                 <div>
                   <p>{job.description}</p>
-
                   <p>
                     Prazo:
                     {" " +
-                      date.getDate() +
+                      date.getDay() +
                       "/" +
                       date.getMonth() +
                       "/" +
@@ -96,11 +93,10 @@ export default class CardServico extends React.Component {
                         })}
                     </strong>
                   </p>
-
                   <p>
                     Aceita:{" "}
                     {job.paymentMethods.map((payment) => {
-                      return <span>{payment}</span>;
+                      return <span key={payment}>{payment}</span>;
                     })}
                   </p>
                 </div>

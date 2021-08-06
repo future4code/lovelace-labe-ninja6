@@ -68,7 +68,7 @@ export default class Carrinho extends React.Component {
     }
 
     contratarServico = (carrinho) => {
-        carrinho.map((item) => {
+        carrinho.forEach((item) => {
             const url = `https://labeninjas.herokuapp.com/jobs/${item.id}`;
             const headers = {
                 headers: {

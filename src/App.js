@@ -2,7 +2,6 @@ import React from "react";
 import * as HomeStyles from "./App.styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { theme } from "./theme";
-import Grid from "@material-ui/core/Grid";
 //Componentes
 import CardServico from "./components/CardServico";
 import Carrinho from "./components/ComponentCarrinho/Carrinho";

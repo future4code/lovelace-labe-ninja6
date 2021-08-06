@@ -1,7 +1,5 @@
 import React from "react";
 import Styled from "styled-components";
-import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import {
   Input,
@@ -190,10 +188,17 @@ export default class Contratar extends React.Component {
         taken: true
     };
     try {
-        const add = await axios.post(url, body, headers)
-        await this.mostraALista()
-        this.props.AddQtdCarrinho();
-        alert('Serviço adicionado com sucesso!')
+        const res = await axios.post(url, body, headers)
+
+        if(res.status === 200){
+          await this.mostraALista()
+          this.props.AddQtdCarrinho();
+          alert('Serviço adicionado com sucesso!')
+        }
+        else {
+          throw new Error('Falha ao tentar adicionar serviço :(')
+        }
+
     } catch (erro) {
         alert(erro.response.data.error)
     }
@@ -259,7 +264,7 @@ export default class Contratar extends React.Component {
             else return -1;
 
           default:
-            break;
+            return 0;
         }
       });
 
