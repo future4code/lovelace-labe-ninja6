@@ -180,27 +180,27 @@ export default class Contratar extends React.Component {
   adicionarCarrinho = async (id_job) => {
     const url = `https://labeninjas.herokuapp.com/jobs/${id_job}`;
     const headers = {
-    headers: {
-            Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
-        },
+      headers: {
+        Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+      },
     };
     const body = {
-        taken: true
+      taken: true
     };
     try {
-        const res = await axios.post(url, body, headers)
+      const res = await axios.post(url, body, headers)
 
-        if(res.status === 200){
-          await this.mostraALista()
-          this.props.AddQtdCarrinho();
-          alert('Serviço adicionado com sucesso!')
-        }
-        else {
-          throw new Error('Falha ao tentar adicionar serviço :(')
-        }
+      if (res.status === 200) {
+        await this.mostraALista()
+        this.props.AddQtdCarrinho();
+        alert('Serviço adicionado com sucesso!')
+      }
+      else {
+        throw new Error('Falha ao tentar adicionar serviço :(')
+      }
 
     } catch (erro) {
-        alert(erro.response.data.error)
+      alert(erro.response.data.error)
     }
   }
 
@@ -215,7 +215,12 @@ export default class Contratar extends React.Component {
     axios
       .get(url, headers)
       .then((resp) => {
-        this.setState({ listaDeServicos: resp.data.jobs });
+        
+        const listaDeServicosDisponiveis = resp.data.jobs.filter(servico => {
+          return !servico.taken
+        })
+
+        this.setState({ listaDeServicos: listaDeServicosDisponiveis });
       })
       .catch((erro) => {
         alert(erro.response.data.message);
@@ -275,15 +280,15 @@ export default class Contratar extends React.Component {
           <h4>{servico.title}</h4>
           <p>
             Prazo: {date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()} por apenas <strong>
-              {servico.price.toLocaleString("pt-BR", {style: 'currency', currency: 'BRL'})}
-          </strong>
+              {servico.price.toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })}
+            </strong>
           </p>
           <div>
             <Button
-                onClick={() => this.props.VerDetalhes(servico.id)}
-                variant="contained">Ver detalhes</Button>
+              onClick={() => this.props.VerDetalhes(servico.id)}
+              variant="contained">Ver detalhes</Button>
             <Button id={servico.id}
-                onClick={() => this.adicionarCarrinho(servico.id)}
+              onClick={() => this.adicionarCarrinho(servico.id)}
               variant="contained"
               color="primary"
               startIcon={<AddShoppingCartIcon />}
