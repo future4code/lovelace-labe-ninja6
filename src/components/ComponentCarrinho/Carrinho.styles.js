@@ -33,14 +33,9 @@ export const Items = styled.div `
   padding: 20px;
   background: #AAABB8;
   color: #2E9CCA;
-<<<<<<< HEAD
-  
-
-=======
   margin: 10px auto;
   border-radius: 5px;
   
->>>>>>> master
   div {
     display: flex;
     align-items: center;
@@ -97,12 +92,9 @@ export const Total = styled.div `
       color: #AAABB8;
     }
   }
-<<<<<<< HEAD
-
-=======
 `
 
-export const CarrinhoVazio = styled.div`
+export const CarrinhoVazio = styled.div `
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -116,5 +108,4 @@ export const CarrinhoVazio = styled.div`
     font-size: 30px;
     margin: 20px auto;
   }
->>>>>>> master
 `

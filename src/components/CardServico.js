@@ -19,8 +19,8 @@ const ContainerServico = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 1em;
-    width: 90%;
-    height: 85%;
+    width: 95%;
+    height: 95%;
     box-sizing: border-box;
     background-color: #aaabb8;
     color: #25274d;
@@ -48,6 +48,10 @@ const Servico = styled.div`
 
     p {
       padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 2px;
+      justify-content: center;
     }
 
     span {
@@ -56,6 +60,7 @@ const Servico = styled.div`
       padding: 10px;
       margin: auto 10px;
       color: #aaabb8;
+      min-width: 75px;
     }
   }
 
