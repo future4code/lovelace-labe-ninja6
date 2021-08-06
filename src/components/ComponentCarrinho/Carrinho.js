@@ -50,10 +50,9 @@ export default class Carrinho extends React.Component {
 
         try {
             await axios.post(url, body, headers)
-
-            alert('Serviço removido com sucesso!')
-
             await this.pegarListaCarrinho()
+            this.props.DelQtdCarrinho();
+            alert('Serviço removido com sucesso!')
         } catch (erro) {
             alert(erro.response.data.error)
         }
