@@ -164,7 +164,7 @@ const StyledLoading = Styled.div`
       color: white;
       font-size: 2rem;
     }
-`
+`;
 
 export default class Contratar extends React.Component {
   state = {
@@ -209,7 +209,7 @@ export default class Contratar extends React.Component {
     axios
       .get(url, headers)
       .then((resp) => {
-        this.setState({listaDeServicos: resp.data.jobs});
+        this.setState({ listaDeServicos: resp.data.jobs });
       })
       .catch((erro) => {
         alert(erro.response.data.message);
@@ -217,29 +217,26 @@ export default class Contratar extends React.Component {
   };
 
   render() {
-    if(!this.state.listaDeServicos.length)
+    if (!this.state.listaDeServicos.length)
       return (
         <StyledLoading>
           <p>Loading...</p>
         </StyledLoading>
-      )
+      );
 
-    const listaFiltrada = this.state.listaDeServicos.filter( produto => {
-                            const aProcurar = produto.title.toLowerCase()
-                            return aProcurar.includes((this.state.inputBuscar).toLowerCase())  
-                        
-                        }).filter(produto => {
-                            return produto.price < this.state.inputValorMaximo
-                        
-                        }).filter(produto => {
-                            return produto.price > this.state.inputValorMinimo
-                        
-                        }).filter(produto => {
-                          return produto.taken === false
-                      
-                      }).sort( (produtoA, produtoB) => {
-                            if(produtoA===produtoB)
-                                return 0;
+    const listaFiltrada = this.state.listaDeServicos
+      .filter((produto) => {
+        const aProcurar = produto.title.toLowerCase();
+        return aProcurar.includes(this.state.inputBuscar.toLowerCase());
+      })
+      .filter((produto) => {
+        return produto.price < this.state.inputValorMaximo;
+      })
+      .filter((produto) => {
+        return produto.price > this.state.inputValorMinimo;
+      })
+      .sort((produtoA, produtoB) => {
+        if (produtoA === produtoB) return 0;
 
         switch (this.state.inputOrdenar) {
           case "titulo":
