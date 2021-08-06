@@ -75,7 +75,13 @@ class App extends React.Component {
                     BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
                     Job={this.state.job}
                 />
-        }
+
+            default:
+                return <Home
+                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
+                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
+                />
+    }
     }
 
     render() {
