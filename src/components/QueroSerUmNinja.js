@@ -127,7 +127,18 @@ export default class QueroSerUmNinja extends React.Component {
     axios
       .post(url, body, headers)
       .then((resp) => {
-        alert("Serviço cadastrado com sucesso!");
+        if(resp.status === 200){
+          alert("Serviço cadastrado com sucesso!");
+          this.setState({
+            titulo: "",
+            preco: "",
+            descricao: "",
+            formasPagato: []
+          })
+        }
+        else{
+          throw new Error('Algo deu erroado no servidor')
+        }
       })
       .catch((erro) => {
         alert(erro.response.data.message);
