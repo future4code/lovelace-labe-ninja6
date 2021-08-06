@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
 const ContaingerPagina = styled.div`
@@ -10,21 +10,30 @@ const ContaingerPagina = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 const ContainerServico = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  width: 750px;
-  height: 600px;
-  box-sizing: border-box;
-  background-color: #AAABB8;
-  color: #25274d;
-  border-radius: 5px;
-`
+  @media (min-width: 320px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    width: 90%;
+    height: 85%;
+    box-sizing: border-box;
+    background-color: #aaabb8;
+    color: #25274d;
+    border-radius: 5px;
+  }
+  @media (min-width: 768px) {
+    width: 750px;
+    height: 85%;
+    font-size: 1.5em;
+  }
+  @media (min-width: 1200px) {
+  }
+`;
 
 const Servico = styled.div`
   display: flex;
@@ -37,17 +46,16 @@ const Servico = styled.div`
     margin: 20px auto;
     text-align: center;
 
-
     p {
       padding: 20px;
     }
 
     span {
-      background: #25274D;
+      background: #25274d;
       border-radius: 20%;
       padding: 10px;
       margin: auto 10px;
-      color: #AAABB8;
+      color: #aaabb8;
     }
   }
 
@@ -55,47 +63,60 @@ const Servico = styled.div`
     width: 50%;
     margin: 5px auto;
   }
-`
+`;
 
 export default class CardServico extends React.Component {
-    render() {
-        return (
-            <ContaingerPagina>
-                <ContainerServico>
-                    {this.props.Job.map((job) => {
-                        const date = new Date(job.dueDate)
-                        return (
-                            <Servico key={job.id}>
-                                <h1>{job.title}</h1>
+  render() {
+    return (
+      <ContaingerPagina>
+        <ContainerServico>
+          {this.props.Job.map((job) => {
+            const date = new Date(job.dueDate);
+            return (
+              <Servico key={job.id}>
+                <h1>{job.title}</h1>
 
-                                <div>
-                                    <p>{job.description}</p>
+                <div>
+                  <p>{job.description}</p>
 
-                                    <p>
-                                        Prazo:{" " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()} por <strong>{" " + job.price.toLocaleString("pt-BR", {
-                                        style: 'currency',
-                                        currency: 'BRL'
-                                    })}</strong>
-                                    </p>
+                  <p>
+                    Prazo:
+                    {" " +
+                      date.getDate() +
+                      "/" +
+                      date.getMonth() +
+                      "/" +
+                      date.getFullYear()}{" "}
+                    por{" "}
+                    <strong>
+                      {" " +
+                        job.price.toLocaleString("pt-BR", {
+                          style: "currency",
+                          currency: "BRL",
+                        })}
+                    </strong>
+                  </p>
 
-                                    <p>Aceita: {job.paymentMethods.map((payment) => {
-                                        return <span>{payment}</span>
-                                    })}</p>
-                                </div>
-
-                                <Button variant="contained" color="primary">
-                                    Adicionar ao Carrinho
-                                </Button>
-
-                                <Button
-                                    onClick={this.props.BotaoVoltar}
-                                    variant="contained">Voltar para Lista de Serviços</Button>
-                            </Servico>
-                        )
+                  <p>
+                    Aceita:{" "}
+                    {job.paymentMethods.map((payment) => {
+                      return <span>{payment}</span>;
                     })}
+                  </p>
+                </div>
 
-                </ContainerServico>
-            </ContaingerPagina>
-        );
-    }
+                <Button variant="contained" color="primary">
+                  Adicionar ao Carrinho
+                </Button>
+
+                <Button onClick={this.props.BotaoVoltar} variant="contained">
+                  Voltar para Lista de Serviços
+                </Button>
+              </Servico>
+            );
+          })}
+        </ContainerServico>
+      </ContaingerPagina>
+    );
+  }
 }
