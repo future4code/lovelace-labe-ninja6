@@ -75,7 +75,13 @@ class App extends React.Component {
                     BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
                     Job={this.state.job}
                 />
-        }
+
+            default:
+                return <Home
+                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
+                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
+                />
+    }
     }
 
     render() {
@@ -83,8 +89,6 @@ class App extends React.Component {
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
                     <HomeStyles.LogoPeq onClick={() => this.setState({ paginaAtual: "home" })} src={logoHeader} alt="Logo da LabeNinjas" />
-
-
                     <button onClick={() => this.setState({ paginaAtual: "carrinho" })}>Carrinho</button>
                 </HomeStyles.Header>
 
