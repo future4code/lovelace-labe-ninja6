@@ -94,7 +94,7 @@ export const Total = styled.div `
   }
 `
 
-export const CarrinhoVazio = styled.div`
+export const CarrinhoVazio = styled.div `
   display: flex;
   flex-direction: column;
   justify-content: center;
