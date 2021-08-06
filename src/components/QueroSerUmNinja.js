@@ -75,8 +75,6 @@ const getCurrentDate = () => {
   const ano = data.getFullYear()
   let dia = Number(data.getDay()) + 2
   dia = ("0" + dia.toString()).slice(-2)
-
-
   return `${ano}-${mes}-${dia}`
 }
 
@@ -156,21 +154,21 @@ export default class QueroSerUmNinja extends React.Component {
             <h2>Cadastre seu serviço</h2>
 
             <TextField
-              id="outlined-basic"
+              id="outlined-basic1"
               label="Título do serviço"
               variant="outlined"
               value={this.state.titulo}
               onChange={this.alteraInputTitulo}
             />
             <TextField
-              id="outlined-basic"
+              id="outlined-basic2"
               label="Descrição do serviço"
               variant="outlined"
               value={this.state.descricao}
               onChange={this.alteraInputDescricao}
             />
             <TextField
-              id="outlined-basic"
+              id="outlined-basic3"
               label="Preço do serviço"
               variant="outlined"
               value={this.state.preco}
@@ -186,12 +184,6 @@ export default class QueroSerUmNinja extends React.Component {
               </InputLabel>
               <div>
                 <Select
-                  // labelId="demo-simple-select-outlined-label"
-                  // id="demo-simple-select-outlined"
-                  // value={this.state.formasPagato}
-                  // onChange={this.handleChange}
-                  // label="Formas de pagamentos"
-
                   labelId="demo-simple-select-placeholder-label-label"
                   id="demo-mutiple-name"
                   multiple
