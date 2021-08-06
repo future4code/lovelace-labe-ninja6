@@ -1,7 +1,7 @@
 import React from "react";
 import * as HomeStyles from "./App.styles";
-import {ThemeProvider} from "@material-ui/styles";
-import {theme} from "./theme";
+import { ThemeProvider } from "@material-ui/styles";
+import { theme } from "./theme";
 import Grid from "@material-ui/core/Grid";
 //Componentes
 import CardServico from "./components/CardServico";
@@ -12,6 +12,7 @@ import QueroSerUmNinja from "./components/QueroSerUmNinja";
 
 //Images
 import logoHeader from "./img/logo_header.png";
+import Axios from 'axios';
 
 
 import axios from "axios";
@@ -43,48 +44,52 @@ class App extends React.Component {
         }
     }
 
+
     paginaSelecionada = () => {
         switch (this.state.paginaAtual) {
             case 'home':
                 return <Home
-                    onClickQueroSerNinja={() => this.setState({paginaAtual: "queroserumninja"})}
-                    onClickContratarNinjas={() => this.setState({paginaAtual: "contratar"})}
+                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
+                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
                 />
 
             case 'queroserumninja':
                 return <QueroSerUmNinja
-                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
+                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                 />
 
             case 'carrinho':
                 return <Carrinho
-                    BotaoVoltar={() => this.setState({paginaAtual: "contratar"})}
+                    BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
                 />
 
             case 'contratar':
                 return <Contratar
-                    BotaoVoltar={() => this.setState({paginaAtual: "home"})}
+                    BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                     VerDetalhes={this.getJobById}
-                    AddCarrinho={() => this.setState({paginaAtual: "carrinho"})}
+                    AddCarrinho={() => this.setState({ paginaAtual: "carrinho" })}
                 />
 
             case 'verdetalhes':
                 return <CardServico
-                    BotaoVoltar={() => this.setState({paginaAtual: "contratar"})}
+                    BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
                     Job={this.state.job}
                 />
-        }
+
+            default:
+                return <Home
+                    onClickQueroSerNinja={() => this.setState({ paginaAtual: "queroserumninja" })}
+                    onClickContratarNinjas={() => this.setState({ paginaAtual: "contratar" })}
+                />
+    }
     }
 
     render() {
         return (
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
-                    <HomeStyles.LogoPeq
-                        onClick={() => this.setState({paginaAtual: "home"})}
-                        src={logoHeader}
-                        alt="Logo da LabeNinjas"
-                    />
+                    <HomeStyles.LogoPeq onClick={() => this.setState({ paginaAtual: "home" })} src={logoHeader} alt="Logo da LabeNinjas" />
+                    <button onClick={() => this.setState({ paginaAtual: "carrinho" })}>Carrinho</button>
                 </HomeStyles.Header>
 
                 {this.paginaSelecionada("home")}
