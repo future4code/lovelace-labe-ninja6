@@ -90,9 +90,8 @@ export default class QueroSerUmNinja extends React.Component {
   };
 
   handleChange = (event) => {
-    const novoObjeto = event.target.value;
-    const novoArray = [novoObjeto];
-    this.setState({ formasPagato: novoArray });
+    const copiaFormasPagato = [...event.target.value]
+    this.setState({ formasPagato: copiaFormasPagato});
   };
   alteraInputPreco = (event) => {
     this.setState({ preco: event.target.value });
@@ -187,11 +186,17 @@ export default class QueroSerUmNinja extends React.Component {
               </InputLabel>
               <div>
                 <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
+                  // labelId="demo-simple-select-outlined-label"
+                  // id="demo-simple-select-outlined"
+                  // value={this.state.formasPagato}
+                  // onChange={this.handleChange}
+                  // label="Formas de pagamentos"
+
+                  labelId="demo-simple-select-placeholder-label-label"
+                  id="demo-mutiple-name"
+                  multiple
                   value={this.state.formasPagato}
                   onChange={this.handleChange}
-                  label="Formas de pagamentos"
                 >
                   <MenuItem value="cartão de crédito">
                     Cartão de crédito
