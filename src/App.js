@@ -12,7 +12,7 @@ import QueroSerUmNinja from "./components/QueroSerUmNinja";
 
 //Images
 import logoHeader from "./img/logo_header.png";
-import Axios from 'axios';
+import logoCarrinho from "./img/Carrinho.png"
 
 
 import axios from "axios";
@@ -21,7 +21,12 @@ import axios from "axios";
 class App extends React.Component {
     state = {
         paginaAtual: 'home',
-        job: []
+        job: [],
+        quantCarrinho: 0
+    }
+
+    componentDidMount(){
+        this.pegarQuantCarrinho()
     }
 
     getJobById = async (jobId) => {
@@ -61,6 +66,7 @@ class App extends React.Component {
             case 'carrinho':
                 return <Carrinho
                     BotaoVoltar={() => this.setState({ paginaAtual: "contratar" })}
+                    DelQtdCarrinho={this.delQtdCarrinho}
                 />
 
             case 'contratar':
@@ -68,6 +74,7 @@ class App extends React.Component {
                     BotaoVoltar={() => this.setState({ paginaAtual: "home" })}
                     VerDetalhes={this.getJobById}
                     AddCarrinho={() => this.setState({ paginaAtual: "carrinho" })}
+                    AddQtdCarrinho={this.addQtdCarrinho}
                 />
 
             case 'verdetalhes':
@@ -84,12 +91,59 @@ class App extends React.Component {
     }
     }
 
+    addQtdCarrinho = () => {
+        this.setState({quantCarrinho: this.state.quantCarrinho + 1})
+    }
+
+    delQtdCarrinho = () => {
+        this.setState({quantCarrinho: this.state.quantCarrinho - 1})
+    }
+
+    pegarQuantCarrinho = () => {
+        const url = "https://labeninjas.herokuapp.com/jobs";
+        const headers = {
+            headers: {
+                Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
+            },
+        }
+
+        axios
+            .get(url, headers)
+            .then((resp) => {
+                const jobsSelecionados = resp.data.jobs.filter((job) => {
+                    return job.taken === true
+                })
+
+                this.setState({quantCarrinho: jobsSelecionados.length});
+
+            })
+            .catch((erro) => {
+                alert(erro.response.data.error);
+            });
+    };
+
     render() {
+        const viewCarrinho = () => {
+            return (
+                    <HomeStyles.Carrinho onClick={() => this.setState({ paginaAtual: "carrinho" })}>
+                        <img src={logoCarrinho} alt='Carrinho' />
+            
+                        <HomeStyles.QuantCarrinho>
+                        {this.state.quantCarrinho}
+                            
+                        </HomeStyles.QuantCarrinho>
+                    </HomeStyles.Carrinho>
+            )
+
+        }
+
         return (
             <ThemeProvider theme={theme}>
                 <HomeStyles.Header>
                     <HomeStyles.LogoPeq onClick={() => this.setState({ paginaAtual: "home" })} src={logoHeader} alt="Logo da LabeNinjas" />
-                    <button onClick={() => this.setState({ paginaAtual: "carrinho" })}>Carrinho</button>
+                    {this.state.quantCarrinho ?     
+                        viewCarrinho() : ''
+                    }
                 </HomeStyles.Header>
 
                 {this.paginaSelecionada("home")}
