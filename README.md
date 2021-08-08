@@ -2,7 +2,7 @@
 ![Logo_LabeNinjas](https://user-images.githubusercontent.com/85365177/128575769-8421d053-b028-42b4-864e-bf570d1749b4.png)
 
 
-## Link do Surge:  `https://hesitant-boot.surge.sh/`
+## Link do Surge:  https://hesitant-boot.surge.sh/
 
 
 ### Planejamento Inicial
@@ -56,6 +56,8 @@ Na listagem de trabalhos é possível:
 - Responsividade para celulares
 
 - Colocar Loadings sempre que estiver carregando alguma requisição
+
+- Funcionalidade extra em que, ao adicionar um serviço, o ícone do carrinho aparece no Header informando a quantidade de serviços que foi adicionado.
 
 - Não permitir que os itens sejam adicionados mais de uma vez
 
