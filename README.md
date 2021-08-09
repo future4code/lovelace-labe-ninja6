@@ -1,11 +1,15 @@
-## README - Projeto:
+<div style="text-align: center;">
+
 ![Logo_LabeNinjas](https://user-images.githubusercontent.com/85365177/128575769-8421d053-b028-42b4-864e-bf570d1749b4.png)
 
+</div>
 
-## Link do Surge:  https://hesitant-boot.surge.sh/
+
+## Link do Surge:  
+- https://hesitant-boot.surge.sh/
 
 
-### Planejamento Inicial
+## Planejamento Inicial
 
 - Foi criado um board no Trello contendo todas as tarefas a serem feitas pelos integrantes do grupo
 - Todas as tarefas tiveram suas complexidades estimadas por pontos
@@ -26,7 +30,7 @@
 - Construído um wireframe (esqueleto do site) na plataforma Figma
 
 
-### Implementações
+## Implementações
 
 - Foram criadas duas áreas separadas no site, uma destinada à criação dos serviços oferecidos e outra destinada à listagem e busca dessas ofertas.
 
@@ -49,9 +53,9 @@ Na listagem de trabalhos é possível:
     - Título
     - Valor da remuneração
     - Prazo
+    
 
-
-### Implementações Finais e Últimas Verificações
+## Implementações Finais e Últimas Verificações
 
 - Responsividade para celulares
 
@@ -81,20 +85,20 @@ Na listagem de trabalhos é possível:
 
 - Verificado uso adequado do this.setState
 
-### Integrantes do Grupo:
 
-- Gustavo Carvalho Guimarães
+## Credits
 
-- Rafael Nascimento Silva
-
-- Samyr Chiade Hissa Filho
-
-- Tiago Harumitsu Kodama
-
-- Rafael Fernandes Machado
+- [Gustavo Carvalho Guimarães](https://github.com/GustavoCarv) (Developer)
+- [Rafael Nascimento Silva](https://github.com/rafansilva) (Developer)
+- [Samyr Chiade Hissa Filho](https://github.com/SamyrHissa) (Developer)
+- [Tiago Harumitsu Kodama](https://github.com/tiagoharumitsukodama) (Developer)
+- [Rafael Fernandes Machado](https://github.com/rafaelmach) (Developer)
+- [Labenu](https://www.labenu.com.br/) (Turma - Lovelace)
 
 
-### Prints do Site:
+## Imagens:
+
+
 ![Página Inicial](https://user-images.githubusercontent.com/85365177/128402822-fec3328c-67c5-4ca5-aac0-531285a2bd59.png)
 
 ![Cadastre seu Serviço](https://user-images.githubusercontent.com/85365177/128576145-a0d969ca-0ab1-45fa-8b51-f2e3d0d768d1.png)
@@ -102,7 +106,5 @@ Na listagem de trabalhos é possível:
 ![Página Detalhes do Serviço](https://user-images.githubusercontent.com/85365177/128576662-bc1d8695-4b36-4a2a-9ec3-d85f3ed50fea.png)
 
 ![Página do Carrinho](https://user-images.githubusercontent.com/85365177/128576880-93dc0d94-0113-4ebf-ae29-7b70d08dd57e.png)
-
-
 
 
