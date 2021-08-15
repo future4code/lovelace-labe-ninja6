@@ -1,68 +1,110 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div style="text-align: center;">
 
-## Available Scripts
+![Logo_LabeNinjas](https://user-images.githubusercontent.com/85365177/128575769-8421d053-b028-42b4-864e-bf570d1749b4.png)
 
-In the project directory, you can run:
+</div>
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Link do Surge:  
+- https://hesitant-boot.surge.sh/
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Planejamento Inicial
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Foi criado um board no Trello contendo todas as tarefas a serem feitas pelos integrantes do grupo
+- Todas as tarefas tiveram suas complexidades estimadas por pontos
+- Todas as tarefas tiveram uma definição de feito
+- Foram anexados materiais gráficos e links nos cards para facilitar o trabalho de quem pegar a tarefa
+- Todos os cards possuem descrições detalhadas do que precisa ser feito
+- Todas as tarefas tiveram um (ou mais) responsável(is).
+- Nosso board de Kanban contém as seguintes colunas:
+    - A fazer
+    - Em progresso
+    - Em teste
+    - Pronto
 
-### `npm run build`
+- Foi definido o layout de todas as páginas
+- Feito a definição da paleta de cores
+- Criado nova logo da empresa em conformidade com a paleta de cores
+- Foi planejado como iríamos cumprir todos os requisitos
+- Construído um wireframe (esqueleto do site) na plataforma Figma
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Implementações
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Foram criadas duas áreas separadas no site, uma destinada à criação dos serviços oferecidos e outra destinada à listagem e busca dessas ofertas.
 
-### `npm run eject`
+- Na parte de busca e listagem, o usuário é capaz de ver mais detalhes de uma oferta e decidir se deseja contratá-la. Também é possível que o usuário desista da contratação.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Implementado a funcionalidade do carrinho de compras, onde o usuário consegue adicionar propostas para contratá-las.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Toda proposta de serviço contém os seguintes campos: 
+- Título
+- Descrição
+- Valor da remuneração
+- Método(s) de pagamento oferecidos
+- Prazo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Na listagem de trabalhos é possível:
+- Filtrar por:
+    - Valor mínimo e máximo
+    - Título ou descrição (busca)
+- Ordenar por:
+    - Título
+    - Valor da remuneração
+    - Prazo
+    
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Implementações Finais e Últimas Verificações
 
-## Learn More
+- Responsividade para celulares
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Colocar Loadings sempre que estiver carregando alguma requisição
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Funcionalidade extra em que, ao adicionar um serviço, o ícone do carrinho aparece no Header informando a quantidade de serviços que foi adicionado.
 
-### Code Splitting
+- Não permitir que os itens sejam adicionados mais de uma vez
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Manter os itens no carrinho mesmo que a página seja atualizada
 
-### Analyzing the Bundle Size
+- Construída interface fácil e intuitiva de se operar
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Realizada a integração com a API
 
-### Making a Progressive Web App
+- Revisado a indentação do código
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Nomenclatura de variáveis dentro do padrão
 
-### Advanced Configuration
+- Verificado se não foi deixado nenhum log ou registro desnecessário pelo código
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Verificado se isolamos constantes que se repetem em arquivos separados
 
-### Deployment
+- Implementado organização dos arquivos do projeto em pastas separadas
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- Verificado se código mostra as mensagens de erro enviadas pelo back para o usuário, e não apenas no console
 
-### `npm run build` fails to minify
+- Verificado uso adequado do this.setState
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Credits
+
+- [Gustavo Carvalho Guimarães](https://github.com/GustavoCarv) (Developer)
+- [Rafael Nascimento Silva](https://github.com/rafansilva) (Developer)
+- [Samyr Chiade Hissa Filho](https://github.com/SamyrHissa) (Developer)
+- [Tiago Harumitsu Kodama](https://github.com/tiagoharumitsukodama) (Developer)
+- [Rafael Fernandes Machado](https://github.com/rafaelmach) (Developer)
+- [Labenu](https://www.labenu.com.br/) (Turma - Lovelace)
+
+
+## Imagens:
+
+
+![Página Inicial](https://user-images.githubusercontent.com/85365177/128402822-fec3328c-67c5-4ca5-aac0-531285a2bd59.png)
+
+![Cadastre seu Serviço](https://user-images.githubusercontent.com/85365177/128576145-a0d969ca-0ab1-45fa-8b51-f2e3d0d768d1.png)
+
+![Página Detalhes do Serviço](https://user-images.githubusercontent.com/85365177/128576662-bc1d8695-4b36-4a2a-9ec3-d85f3ed50fea.png)
+
+![Página do Carrinho](https://user-images.githubusercontent.com/85365177/128576880-93dc0d94-0113-4ebf-ae29-7b70d08dd57e.png)
+
+
